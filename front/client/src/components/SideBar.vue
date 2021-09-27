@@ -15,8 +15,8 @@
 <style>
 	#sidebar {
 		display: flex;
-		position: absolute;
-		right: 0;
+		position: fixed;
+		right: 500px;
 		flex-direction: column;
 	}
 	#sidebar a {
