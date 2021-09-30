@@ -1,18 +1,16 @@
 <template>
-	<section id="main-container">
-		<header id="header">
-			<section class="inner">
+	<header id="header">
+		<section class="inner">
 			<a href="#"><img src="../assets/logo2.png" alt="" width="150"></a>
 			<div id="right-icon">
 				<a href="#"><img src="../assets/home1.png" alt="home" width="27"></a>
 				<a href="#"><img src="../assets/follower1.png" alt="home" width="27"></a>
 				<a href="#"><img src="../assets/bookmark1.png" alt="home" width="27"></a>
 				<a id="profileIcon" href="#">H</a>
-				<a href="#"><img src="../assets/edit1.png" alt="home" width="27"></a>
-	</div>
-	</section>
+				<a href="#"><img src="../assets/edit1.png"	 alt="home" width="27"></a>
+			</div>
+		</section>
 	</header>
-	</section>
 </template>
 
 <script>
@@ -55,9 +53,9 @@
 		border-radius: 50%;
 		color: black;
 		text-decoration: none;
-		width: 33px;
-		height: 33px;
+		width: 29px;
+		height: 29px;
 		text-align: center;
-		font-size: 19px;
+		font-size: 17px;
 	}
 </style>

@@ -1,16 +1,15 @@
 <template>
-	<div>		
-		<!-- <Home /> -->
-		<Header />
+	<div >
+		<Mypage />
 	</div>
 </template>
 
 <script>
 	// import Home from './views/Home'
-	import Header from './components/Header'
+	import Mypage from './components/Mypage'
 
 	export default {
-		components: {Header, /*Home*/},
+		components: {Mypage, /*Home*/},
 		// computed: {
 		// 	user() {
 		// 		return this.$store.state.user;
