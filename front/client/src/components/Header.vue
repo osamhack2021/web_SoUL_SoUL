@@ -1,7 +1,7 @@
 <template>
 	<header id="header">
 		<section class="inner">
-			<a href="#"><img src="../assets/logo2.png" alt="" width="150"></a>
+			<a href="#"><img id="logosize" src="../assets/logo2.png" alt=""></a>
 			<div id="right-icon">
 				<a href="#"><img src="../assets/home1.png" alt="home" class="iconsize"></a>
 				<a href="#"><img src="../assets/follower1.png" alt="home" class="iconsize"></a>
@@ -40,6 +40,9 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+	}
+	#header .inner #logosize{
+		width: 9.375em;
 	}
 	#header #right-icon {
 		width: 11.875rem;

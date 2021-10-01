@@ -1,17 +1,19 @@
 <template>
 	<div id="main-contaniner">
 		<Header />
-		<section id="profile-box">
-			<img class="iconsize" src="../assets/profile-tmp.png" />
-			<div id="profile-information">
-				<p class="name">{{ username }}</p>
-				<p class="intro">{{ userintro }}</p>
+		<div id="in-contaniner">
+			<section id="profile-box">
+				<img class="iconsize" src="../assets/profile-tmp.png" />
+				<div id="profile-information">
+					<p class="name">{{ username }}</p>
+					<p class="intro">{{ userintro }}</p>
+				</div>
+				<div id="edit-button" class="button-default"><a class="fontCenter" href="#">프로필 수정</a></div>
+			</section>
+			<div id="mycontents">
+				<section id="content-box"></section>
 			</div>
-			<div id="edit-button" class="button-default"><a class="fontCenter" href="#">프로필 수정</a></div>
-		</section>
-		<section id="mycontents">
-<!-- 	컨텐츠 버튼 구현하기		 -->
-		</section>
+		</div>
 	</div>
 </template>
 
@@ -36,18 +38,25 @@
 </script>
 
 <style>
-	a:link, a:visited, a:hover { color: #AFAFAF; text-decoration: none;}
-	a:active { text-decoration:none; opacity: 0.5;}
+	#in-contaniner {
+		position: relative;
+		top: 7.5rem;
+	}
+	#profile-box a:link, a:visited, a:hover { color: #AFAFAF; text-decoration: none;}
+	#profile-box a:active { text-decoration:none; opacity: 0.5;}
 	#profile-box {
 		position: relative;
 		width: 42.5rem;
+		height: 8.75rem;
 		display: flex;
-		top: 7.5rem;
 		border: 1px solid;
 		margin: 0 auto;
 	}
 	#profile-box #profile-information {
 		margin-left: 3.125rem;
+	}
+	#profile-box .iconsize {
+		width: 8.75rem;
 	}
 	#profile-box #profile-information .name {
 		font-size: 2.25rem;
@@ -67,10 +76,14 @@
 		line-height: 1.75rem;
 
 	}
-	#profile-box .iconsize{
-		width: 8.75rem;
+	#mycontents {
+		position: relative;
+		width: 42.5rem;
+		height: 33.125em;
+		border: 1px solid;
+		margin: 1.5em auto 0;
 	}
-	.button-default{
+	.button-default {
 		position: relative;
 		box-sizing: border-box;
 		border: 0.0625rem solid #AFAFAF;
@@ -80,5 +93,4 @@
 		display: block;
 		text-align: center;
 	}
-/* 로고 박스 반응형으로 만들기 */
 </style>
