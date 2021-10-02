@@ -1,15 +1,15 @@
 <template>
 	<div >
-		<Mypage />
+		<WriteSonagi />
 	</div>
 </template>
 
 <script>
-	// import Home from './views/Home'
-	import Mypage from './components/Mypage'
+	import WriteSonagi from './views/WriteSonagi'
+
 
 	export default {
-		components: {Mypage, /*Home*/},
+		components: {WriteSonagi, },
 		// computed: {
 		// 	user() {
 		// 		return this.$store.state.user;

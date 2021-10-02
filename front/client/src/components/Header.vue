@@ -3,11 +3,21 @@
 		<section class="inner">
 			<a href="#"><img id="logosize" src="../assets/logo2.png" alt=""></a>
 			<div id="right-icon">
-				<a href="#"><img src="../assets/home1.png" alt="home" class="iconsize"></a>
-				<a href="#"><img src="../assets/follower1.png" alt="home" class="iconsize"></a>
-				<a href="#"><img src="../assets/bookmark1.png" alt="home" class="iconsize"></a>
-				<a id="profileIcon" href="#">H</a>
-				<a href="#"><img src="../assets/edit1.png"	alt="home" class="iconsize"></a>
+				<a href="#"><img src="../assets/home1.png" alt="home" class="iconsize iconbox"></a>
+				<a href="#"><img src="../assets/follower1.png" alt="follower" class="iconsize iconbox"></a>
+				<a href="#"><img src="../assets/bookmark1.png" alt="bookmark" class="iconsize iconbox"></a>
+				<a id="profileIcon" href="#" class="iconbox">H</a>
+				<!-- <a href="#"><img src="../assets/write1.png"	alt="home" class="iconsize"></a> -->
+				<div class="dropdown">
+					<a class="btn" href="#" role="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false">
+						<img src="../assets/write1.png"	alt="write" class="iconsize"></a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="writecontent">
+						<li><a class="dropdown-item" href="#">소나기</a></li>
+						<li><a class="dropdown-item" href="#">발자국</a></li>
+						<li><a class="dropdown-item" href="#">독후감</a></li>
+						<li><a class="dropdown-item" href="#">문학</a></li>
+						</ul>
+				</div>
 			</div>
 		</section>
 	</header>
@@ -41,11 +51,10 @@
 		justify-content: space-between;
 		align-items: center;
 	}
-	#header .inner #logosize{
-		width: 9.375em;
-	}
+	#header .inner a:active {	opacity: 0.5;}
+	#header .inner #logosize{	width: 9.375em;	}
 	#header #right-icon {
-		width: 11.875rem;
+		/* width: 11.875rem; */
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -61,8 +70,13 @@
 		text-align: center;
 		font-size: 1rem;
 		font-weight: bold;
+		margin: 6px;
 	}
-	#header #right-icon .iconsize{
-		width: 1.75em;
-	}
+	#header #right-icon .iconsize{ width: 1.75em;	}
+	#header #right-icon .iconbox{	margin: 6px; }
+	#header #right-icon #writecontent{ padding: 6px; }
+	.dropdown-item:active {	background-color: #C4C4C4; }
+	.btn:focus,.btn:active {outline: none !important; box-shadow: none;}
+	.dropdown-menu {min-width: fit-content;}
+	.dropdown-item {text-align: center;}
 </style>
