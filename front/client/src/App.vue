@@ -1,14 +1,13 @@
 <template>
 	<div >
-		<WriteSonagi />
+		<Header />
 	</div>
 </template>
 
 <script>
-	import WriteSonagi from './views/WriteSonagi'
-
+	import Header from "./components/Header.vue"
 	export default {
-		components: {WriteSonagi,},
+		components: {Header,},
 		// computed: {
 		// 	user() {
 		// 		return this.$store.state.user;

@@ -1,7 +1,7 @@
 <template>
-	<div id="main-contaniner">
-		<Header />
-		<div id="in-contaniner">
+	<!-- <div id="main-contaniner"> -->
+		<!-- <Header /> -->
+		<div id="main-contaniner">
 			<section id="profile-box">
 				<img class="iconsize" src="../assets/profile-tmp.png" />
 				<div id="profile-information">
@@ -21,15 +21,15 @@
 				<section id="content-box"><!-- 안에 컨텐츠별 글 상자 나오게 구성--></section>
 			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 </template>
 
 <script>
 
-	import Header from './Header'
+	// import Header from './Header'
 
 	export default {
-		components: {Header, },
+		// components: {Header, },
 		data() {
 			return {
 				username: "Dongu", 
@@ -45,11 +45,11 @@
 </script>
 
 <style>
-	#in-contaniner {
+	#main-contaniner {
 		position: relative;
 		top: 7.5rem;
 	}
-	#in-contaniner a:link, a:visited, a:hover { color: #AFAFAF; text-decoration: none;}
+	#main-contaniner a:link, a:visited, a:hover { color: #AFAFAF; text-decoration: none;}
 	#profile-box a:active { text-decoration:none; opacity: 0.5;}
 	#profile-box {
 		position: relative;

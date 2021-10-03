@@ -13,10 +13,13 @@
 </script>
 
 <style>
-	#main-container {
+	/* #main-container {
 		display: flex;
 		justify-content: center;
-	}
+	} */
+	#main-contaniner {		
+		position: relative;
+		top: 7.5rem;}
 	#main-container #inner {
 		display: flex;
 		width: 1200px;
@@ -25,7 +28,7 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 110px;
-		
+		margin: 0 auto;
 		/* border: 1px solid; */
 	}
 	#logo {
