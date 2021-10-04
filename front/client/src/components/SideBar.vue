@@ -1,25 +1,36 @@
-<template>
-	<section id="sidebar">
-		<a href="#"><img src="../assets/home1.png" alt="home" width="40"></a>
-		<a href="#">Profile</a>
-		<a href="#"><img src="../assets/follower1.png" alt="home" width="40"></a>
-		<a href="#"><img src="../assets/bookmark1.png" alt="home" width="40"></a>
-		<a href="#"><img src="../assets/edit1.png" alt="home" width="40"></a>		
-	</section>
+<!-- <template>
+	<div id="tmp">	
+		<section id="sidebar-box">
+			<a href="#">소나기</a>
+			<a href="#">발자국</a>
+			<a href="#">독후감</a>
+			<a href="#">문학</a>
+		</section>
+	</div>
 </template>
 
 <script>
-
 </script>
 
-<style>
-	#sidebar {
+<style scoped>
+	#sidebar-box {
+		position: absolute;
 		display: flex;
-		position: fixed;
-		right: 500px;
 		flex-direction: column;
+		width: 48.75rem;
+		margin: 0 auto;
+		border: 1px solid red;
 	}
 	#sidebar a {
 		margin: 10px;
 	}
+	/* #tmp {
+		display: flex;	
+		justify-content: center;
+		align-items: center;
+		width: 48.75rem;
+		margin: 0 auto;
+		border: 1px solid red;	
+	} */
 </style>
+ -->

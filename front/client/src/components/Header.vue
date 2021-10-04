@@ -1,10 +1,12 @@
 <template>
+<div>
 	<header id="header">
 		<section class="inner">
 			<router-link to="/home"><img id="logosize" src="../assets/logo2.png" alt=""></router-link>
 			<!-- <a href="/home"><img id="logosize" src="../assets/logo2.png" alt=""></a> -->
 			<div id="right-icon">
-				<a href="#"><img src="../assets/home1.png" alt="home" class="iconsize iconbox"></a>
+				<router-link to="/main"><img src="../assets/home1.png" alt="home" class="iconsize iconbox"></router-link>
+				<!-- <a href="#"><img src="../assets/home1.png" alt="home" class="iconsize iconbox"></a> -->
 				<a href="#"><img src="../assets/follower1.png" alt="follower" class="iconsize iconbox"></a>
 				<a href="#"><img src="../assets/bookmark1.png" alt="bookmark" class="iconsize iconbox"></a>
 				<router-link to="/mypage" id="profileIcon" class="iconbox">H</router-link>
@@ -21,14 +23,12 @@
 						<router-link class="dropdown-item" to="/writefootprint">발자국</router-link>
 						<router-link class="dropdown-item" to="/writebook">독후감</router-link>
 						<router-link class="dropdown-item" to="/writemunhak">문학</router-link>
-						
-
 						</ul>
 				</div>
 			</div>
 		</section>
 	</header>
-	<router-view/>
+</div>
 </template>
 
 <script>
@@ -41,18 +41,19 @@
 			return {
 				username: 'H'
 			};
-		}
+		},
+
 	}
 </script>	
 
-<style>
-	#header {
+<style scope>
+#header {
 		position: absolute;
 		width: 100%;
 		left: 0;
 		top: 0;
 		z-index: 999;
-		border-bottom: 1px solid;
+		/* border-bottom: 1px solid; */
 	}
 	#header .inner {
 		width: 42.1875rem;
@@ -70,6 +71,7 @@
 		justify-content: space-between;
 		align-items: center;
 	}
+	#header #right-icon a:visited {color: black;}
 	#header #right-icon #profileIcon{
 		display: inline-block;
 		border: 0.125rem solid black;
@@ -90,4 +92,79 @@
 	.btn:focus,.btn:active {outline: none !important; box-shadow: none;}
 	.dropdown-menu {min-width: fit-content;}
 	.dropdown-item {text-align: center;}
+</style>
+
+
+<style>
+	#main-contaniner {position: relative;	top: 7.5rem;}
+	#main-contaniner textarea {margin-left: 0.5rem; margin-right: 0.5rem;}
+	#writing-box {
+		display: grid;
+		top: 20px;
+		width: 42.5rem;
+		border: 2px solid #C4C4C4;
+		margin: 0 auto;
+	}
+	input:focus, textarea:focus { outline:none;}
+	#writing-box textarea.autosize { min-height: 50px; }
+	#writing-box #maintext-box {
+		border: none;
+		resize: none;
+		/* overflow-y: hidden; */
+	}
+	#main-contaniner #writing-box-footer {
+		width: 42.5rem;
+		margin: 0 auto;
+	}
+	#writing-box-footer #public-checkbox {
+		margin: 5px 0 0;
+	}
+	#writing-box-footer #public-checkbox #public:focus, #public:active {outline: none !important; box-shadow: none !important; border-color: #C4C4C4; fill: #C4C4C4}
+	#writing-box-footer #public-checkbox .form-check-input:checked{background-color: #C4C4C4; border-color: #C4C4C4;}
+	#writing-box-footer #public-checkbox .form-check-input:focus{
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+	}
+	#writing-box-footer #button-submit {
+		display: block;
+		border: 0.125rem solid #C4C4C4;
+		border-radius: 5px;
+		background: #C4C4C4;
+		color: #FFF;
+		font-size: 1.5rem;
+		margin: 5px auto;
+		width: 9.375rem;
+		height: 3.5rem;
+	}
+	#writing-box-footer #button-submit:disabled {
+		background: #FFFFFF;
+		color: #C4C4C4;
+	}
+	#writing-box-footer #button:active { opacity: 0.5; border: 0.0625rem solid #AFAFAF;}
+	.form-switch .form-check-input {
+		vertical-align: middle;
+    width: 3em;
+    height: 1.5em;
+		margin-top: 1.5px;
+	}
+	.form-switch .form-check-label {
+		font-size: 1.15rem;
+		margin: 0 0 0 0.5rem;
+	}
+	#date-box {
+		font-size: 0.875rem;
+		width: auto;
+		margin: 0;
+		padding-right: 0.8rem;
+		padding-bottom: 0.5rem;
+		text-align: right;
+		color: #C4C4C4;
+	}
+	.selectedbutton:active {
+		background: #C4C4C4;
+		color: #FFFFFF;
+	}
+	.selectedbutton:visited {
+		background: #C4C4C4;
+		color: #FFFFFF;
+	}
 </style>

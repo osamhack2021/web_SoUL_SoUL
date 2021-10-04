@@ -2,7 +2,7 @@
 	<div id="main-container">
 		<div id="inner">
 			<img id="logo" src="../assets/logo.png" alt="logo">
-			<button id="login">로그인</button> <!-- 로그인 버튼으로 대체  -->
+			<router-link to="" id="login-button">로그인</router-link>
 			<section class="tmp">추천 컨텐츠 글</section>
 		</div>
 	</div>
@@ -12,14 +12,15 @@
 	//카카오톡 서비스로 로그인 및 회원가입 기능 구현
 </script>
 
-<style>
+<style scoped>
 	/* #main-container {
 		display: flex;
 		justify-content: center;
 	} */
 	#main-contaniner {		
 		position: relative;
-		top: 7.5rem;}
+		top: 7.5rem;
+	}
 	#main-container #inner {
 		display: flex;
 		width: 1200px;
@@ -31,24 +32,30 @@
 		margin: 0 auto;
 		/* border: 1px solid; */
 	}
-	#logo {
-		position: relative;
+	#inner #logo {
 		width: 353px;
 		height: 176px;
 	}
-	#login {
-		/* 임의로 지정한 텍스트("로그인") */
-		position: relative;
-		width: 143px;
-		height: 46px;
+	#inner #login-button {
+		width: 8.75rem;
+		height: 2.75rem;
+		box-sizing: content;
 		border: 1px solid #F9E000;
+		border-radius: 0.25rem;
 		background: #F9E000;
-		margin: 40px 0 245px 0;
+		margin: 2.5rem 0 15rem 0;
 		
-		font-size: 25px;
-		/* align-items: center;
-		text-align: center; */
-
+		font-size: 1.5rem;
+		color: black;
+		text-decoration: none;
+		text-align: center;
+		line-height: 2.75rem;
+	}
+	#inner #login-button:visited {
+		color: black;
+	}
+	#inner #login-button:active {
+		opacity: 0.8;
 	}
 	.tmp {
 		position: relative;

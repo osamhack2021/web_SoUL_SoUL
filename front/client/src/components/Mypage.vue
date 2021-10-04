@@ -1,40 +1,46 @@
 <template>
-	<!-- <div id="main-contaniner"> -->
-		<!-- <Header /> -->
-		<div id="main-contaniner">
-			<section id="profile-box">
-				<img class="iconsize" src="../assets/profile-tmp.png" />
-				<div id="profile-information">
-					<p class="name">{{ username }}</p>
-					<p class="intro">{{ userintro }}</p>
-				</div>
-				<div id="button-edit" class="button-default"><a class="fontCenter" href="#">프로필 수정</a></div>
-			</section>
-			<div id="mycontents">
-				<div id="box-button-content">
-					<span class="button-default button-content"><a class="fontCenter" href="#">소나기</a></span>
-					<span class="button-default button-content"><a class="fontCenter" href="#">발자국</a></span>
-					<span class="button-default button-content"><a class="fontCenter" href="#">독후감</a></span>
-					<span class="button-default button-content"><a class="fontCenter" href="#">문학</a></span>
-				</div>
-				<section id="content-header"></section>
-				<section id="content-box"><!-- 안에 컨텐츠별 글 상자 나오게 구성--></section>
+	<div id="main-contaniner">
+		<section id="profile-box">
+			<img class="iconsize" src="../assets/profile-tmp.png" />
+			<div id="profile-information">
+				<p class="name">{{ username }}</p>
+				<p class="intro">{{ userintro }}</p>
 			</div>
+			<div id="button-edit" class="button-default"><a class="fontCenter" href="#">프로필 수정</a></div>
+		</section>
+		<div id="mycontents">
+			<div id="box-button-content">
+				<!-- <a class="fontCenter" href="#" v-on:click="selectedButton(this)"></a>
+				<a class="fontCenter" href="#"><span class="button-default button-content selectedbutton">발자국</span></a>
+				<a class="fontCenter" href="#"><span class="button-default button-content selectedbutton">독후감</span></a>
+				<a class="fontCenter" href="#"><span class="button-default button-content selectedbutton">문학</span></a> -->
+				<router-link class="fontCenter" to="/mypage/sonagi"><span class="button-default button-content selectedbutton">소나기</span></router-link>
+				<router-link class="fontCenter" to="/mypage/footprint"><span class="button-default button-content selectedbutton">발자국</span></router-link>
+				<router-link class="fontCenter" to="/mypage/book"><span class="button-default button-content selectedbutton">독후감</span></router-link>
+				<router-link class="fontCenter" to="/mypage/munhak"><span class="button-default button-content selectedbutton">문학</span></router-link>
+			</div>
+			<section id="content-header"></section>
+			<section id="content-box"><!-- 안에 컨텐츠별 글 상자 나오게 구성-->
+					<router-view></router-view>
+			</section>
 		</div>
-	<!-- </div> -->
+	</div>
 </template>
 
 <script>
 
-	// import Header from './Header'
-
 	export default {
-		// components: {Header, },
+		// components: { },
 		data() {
 			return {
 				username: "Dongu", 
 				userintro: "Nice to meet you!",
 			};
+		},
+		methods: {
+			selectedButton(obj){
+				obj.style.background = "#C4C4C4";
+			}
 		}
 		// computed: {
 		// 	user() {
@@ -44,11 +50,7 @@
 	}
 </script>
 
-<style>
-	#main-contaniner {
-		position: relative;
-		top: 7.5rem;
-	}
+<style scope>
 	#main-contaniner a:link, a:visited, a:hover { color: #AFAFAF; text-decoration: none;}
 	#profile-box a:active { text-decoration:none; opacity: 0.5;}
 	#profile-box {
@@ -105,13 +107,12 @@
 		position: relative;
 		width: 42.5rem;
 		height: 28.125rem; /*나중에 없애기*/
-		
 		border: 1px solid;
 	}
 	.button-default {
 		position: relative;
 		box-sizing: border-box;
-		border: 0.0625rem solid #AFAFAF;
+		border: 0.125rem solid #AFAFAF;
 		background: #fff;
 	}
 	.fontCenter {
@@ -119,7 +120,9 @@
 		text-align: center;
 	}
 	.button-content {
-		display: inline-block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 8.125rem;
 		height: 2.5rem;
 		border-radius: 10px;

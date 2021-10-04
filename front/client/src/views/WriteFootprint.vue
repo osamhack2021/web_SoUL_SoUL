@@ -3,8 +3,8 @@
 		<div id="main-contaniner">
 			<h2>{{ Question }}</h2>
 			<section id="writing-box">
-				<textarea id="maintext-box" v-model="textValue" cols="85" rows="15" autofocus></textarea>
-				<p id="date-box">{{Today}}</p>
+				<textarea id="maintext-box" v-model="textValue" cols="85" rows="15" autofocus placeholder="본문" />
+				<div id="date-box">{{Today}}</div>
 			</section>
 			<section id="writing-box-footer">
 				<div id="public-checkbox" class="form-check form-switch">
@@ -16,6 +16,7 @@
 		</div>
 	</div>
 </template>
+
 
 <script>
 	import dayjs from "dayjs"
@@ -44,14 +45,6 @@
 		margin: 20px auto 56px;
 		width: 40rem;
 		padding-bottom: 10px;
-	}
-	#date-box {
-		width: auto;
-		margin: 0;
-		padding-right: 20px;
-		padding-bottom: 8px;
-		text-align: right;
-		color: #C4C4C4;
 	}
 </style>
  
