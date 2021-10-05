@@ -3,7 +3,7 @@
 		<section id="main-inner">
 			<div id="sidebar-box">
 				<router-link to="/sonagi">소나기</router-link>
-				<router-link to="/footprint">발자국</router-link>
+				<router-link to="/questions">발자국</router-link>
 				<router-link to="/book">독후감</router-link>
 				<router-link to="/munhak">문학</router-link>
 			</div>

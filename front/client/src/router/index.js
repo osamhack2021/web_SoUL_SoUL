@@ -16,6 +16,7 @@ import Mainsonagi from "../views/Mainsonagi"
 import Mainfootprint from "../views/Mainfootprint"
 import Mainbook from "../views/Mainbook"
 import Mainmunhak from "../views/Mainmunhak"
+import Questions from "../views/Questions"
 
 const routes = [
 	{
@@ -34,6 +35,7 @@ const routes = [
 		},
 		children: [
 			{ path: 'sonagi', name: 'Mysonagi', component: Mainsonagi},
+			{ path: 'questions', name: 'Questions', component: Questions},
 			{ path: 'footprint', name: 'Myfootprint', component: Mainfootprint},
 			{ path: 'book', name: 'Mybook', component: Mainbook},
 			{ path: 'munhak', name: 'Mymunhak', component: Mainmunhak}

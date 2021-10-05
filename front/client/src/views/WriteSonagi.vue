@@ -11,7 +11,7 @@
 					<input class="form-check-input" type="checkbox" id="public">
 					<label class="form-check-label" for="public">공개 여부</label>
 				</div>
-				<button id="button-submit" :disabled="textValue == ''">작성완료</button>
+				<button id="button-submit" :disabled="textValue == ''">업로드</button>
 			</section>
 		</div>
 	</div>
@@ -25,7 +25,7 @@
 		// components: {Header, },
 		data() {
 			return {
-				Today: dayjs().format("YYYY-MM-DD"),
+				Today: dayjs().format("YYYY.MM.DD"),
 				textValue: "",
 			};
 		}, 
@@ -43,12 +43,27 @@
 	}
 </script>
 
+<style>
+	#button-submit {
+		box-shadow: 0 1px 1px black;
+	}
+	#button-submit:active {
+		/* opacity: 0.8; */
+		/* border: 1px solid rgba(196,196,196,0.4); */
+		outline: none;
+		transform: translateY(2px);
+		box-shadow: none;
+	}
+	#button-submit:focus {
+		outline: none;
+	}
+</style>
 <style scoped>	
 	#writing-box #sonagi-date-box {
 		margin: 10px auto 10px;
 		border-bottom: 2px solid #C4C4C4; border-right: 0; border-left: 0; border-top: 0;
 		text-align: center;
-		font-size: 1rem !important;
+		font-size: 1.5rem !important;
 		width: auto;
 	}
 </style>

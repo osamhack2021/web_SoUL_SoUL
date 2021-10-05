@@ -56,7 +56,7 @@
 		justify-content: space-between;
 		align-items: center;
 	}
-	#header .inner a:active {	opacity: 0.5;}
+	#header .inner a:active {	opacity: 0.7;}
 	#header .inner #logosize{	width: 9.375em;	}
 	#header #right-icon {
 		/* width: 11.875rem; */

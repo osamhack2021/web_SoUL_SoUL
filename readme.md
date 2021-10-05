@@ -1,4 +1,3 @@
-# test
 ### 본 페이지는 샘플입니다. 아래의 *[샘플 양식에 포함되어 있는 항목은 필수 기재사항]*   입니다.
 해당 내용은 모두 예시이며 설명이 부족하거나 추가하고싶은 부분이 있으면 개발자님이 추가해서 작성하셔도 무관합니다. (동영상, 이미지, 텍스트 적용 전부 자유)
 
@@ -21,13 +20,13 @@
 
 ## 기술 스택 (Technique Used) 
 ### Server(back-end)
- -  nodejs, php, java 등 서버 언어 버전 
+ - nodejs, php, java 등 서버 언어 버전 
  - express, laravel, sptring boot 등 사용한 프레임워크 
  - DB 등 사용한 다른 프로그램 
  
 ### Front-end
- -  react.js, vue.js 등 사용한 front-end 프레임워크 
- -  UI framework
+ - vue.js 프레임워크 
+ - bootstrap
  - 기타 사용한 라이브러리
 
 ## 설치 안내 (Installation Process)
@@ -48,8 +47,8 @@ $ yarn start or npm run start
  샘플 에디터 [https://stackedit.io/app#](https://stackedit.io/app#)
  
 ## 팀 정보 (Team Information)
-- hong gil dong (hong999@gmail.com), Github Id: gildong999
-- kim su ji (suji999@gmail.com), Github Id: suji999
+- kim Dong Hun (.com), Github Id: 
+- Kim Dong Kyu (ehdrb1205@naver.com), Github Id: ehdrb1205
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
  * [MIT](https://github.com/osam2020-WEB/Sample-ProjectName-TeamName/blob/master/license.md)

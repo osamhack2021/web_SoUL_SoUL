@@ -11,7 +11,7 @@
 					<input class="form-check-input" type="checkbox" id="public">
 					<label class="form-check-label" for="public">공개 여부</label>
 				</div>
-				<button id="button-submit" :disabled="textValue == ''">작성완료</button>
+				<button id="button-submit" :disabled="textValue == ''">업로드</button>
 			</section>
 		</div>
 	</div>

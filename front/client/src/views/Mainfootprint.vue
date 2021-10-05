@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2 id="question-box">{{ question }}</h2>
+		<h2 id="question-box">{{ question }}</h2> <!-- Question.vue에서 받은 num에 따라 question이 달라짐. 또한 밑에 content-box에 띄워야할 컨텐츠로 num따라 다르게 DB에서 가져옴 -->
 		<section id="content-box">
 			<div class="nickname">{{ Nickname }}</div>
 			<p>{{ mainText }}</p>

@@ -52,13 +52,12 @@
 
 <style scope>
 	#main-contaniner a:link, a:visited, a:hover { color: #AFAFAF; text-decoration: none;}
-	#profile-box a:active { text-decoration:none; opacity: 0.5;}
+	#profile-box a:active { text-decoration:none; opacity: 0.8;}
 	#profile-box {
 		position: relative;
 		width: 42.5rem;
 		height: 8.75rem;
 		display: flex;
-		border: 1px solid;
 		margin: 0 auto;
 	}
 	#profile-box #profile-information {
@@ -87,7 +86,6 @@
 	#mycontents {
 		position: relative;
 		width: 42.5rem;
-		border: 1px solid;
 		margin: 1.5rem auto 0;
 	}
 	#mycontents #box-button-content {
@@ -112,7 +110,7 @@
 	.button-default {
 		position: relative;
 		box-sizing: border-box;
-		border: 0.125rem solid #AFAFAF;
+		border: 0.125rem solid #C4C4C4;
 		background: #fff;
 	}
 	.fontCenter {
