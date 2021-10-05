@@ -2,10 +2,10 @@
 	<div>
 		<section id="main-inner">
 			<div id="sidebar-box">
-				<router-link to="/main/sonagi">소나기</router-link>
-				<router-link to="/main/footprint">발자국</router-link>
-				<router-link to="/main/book">독후감</router-link>
-				<router-link to="/main/munhak">문학</router-link>
+				<router-link to="/sonagi">소나기</router-link>
+				<router-link to="/footprint">발자국</router-link>
+				<router-link to="/book">독후감</router-link>
+				<router-link to="/munhak">문학</router-link>
 			</div>
 			<div id="contents-box">
 				<router-view></router-view>

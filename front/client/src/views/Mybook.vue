@@ -2,7 +2,7 @@
 	<!-- <section id="content-box">
 	</section> -->
 	<div id="test">
-		독후감
+		발자국
 		
 	</div>
 </template>

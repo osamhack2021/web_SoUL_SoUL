@@ -3,22 +3,15 @@
 	<header id="header">
 		<section class="inner">
 			<router-link to="/home"><img id="logosize" src="../assets/logo2.png" alt=""></router-link>
-			<!-- <a href="/home"><img id="logosize" src="../assets/logo2.png" alt=""></a> -->
 			<div id="right-icon">
-				<router-link to="/main"><img src="../assets/home1.png" alt="home" class="iconsize iconbox"></router-link>
-				<!-- <a href="#"><img src="../assets/home1.png" alt="home" class="iconsize iconbox"></a> -->
+				<router-link to="/sonagi"><img src="../assets/home1.png" alt="home" class="iconsize iconbox"></router-link>
 				<a href="#"><img src="../assets/follower1.png" alt="follower" class="iconsize iconbox"></a>
 				<a href="#"><img src="../assets/bookmark1.png" alt="bookmark" class="iconsize iconbox"></a>
 				<router-link to="/mypage" id="profileIcon" class="iconbox">H</router-link>
-				<!-- <a id="profileIcon" href="/mypage" class="iconbox">H</a> -->
 				<div class="dropdown">
 					<a class="btn" href="#" role="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false">
 						<img src="../assets/write1.png"	alt="write" class="iconsize"></a>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="writecontent">
-						<!-- <li><a class="dropdown-item" href="#">소나기</a></li>
-						<li><a class="dropdown-item" href="#">발자국</a></li>
-						<li><a class="dropdown-item" href="#">독후감</a></li>
-						<li><a class="dropdown-item" href="#">문학</a></li> -->
 						<router-link class="dropdown-item" to="/writesonagi">소나기</router-link>
 						<router-link class="dropdown-item" to="/writefootprint">발자국</router-link>
 						<router-link class="dropdown-item" to="/writebook">독후감</router-link>

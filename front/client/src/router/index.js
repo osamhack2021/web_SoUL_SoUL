@@ -27,7 +27,7 @@ const routes = [
 		}
 	},
 	{
-		path: '/main',
+		path: '/',
 		components: {
 			default: Main, 
 			header: Header
@@ -40,7 +40,7 @@ const routes = [
 		],
 	},
 	{	
-		path: '/', //mypage 붙여주기
+		path: '/mypage', //mypage 붙여주기
 		name: 'Mypage', 
 		components: {
 			default: Mypage,
