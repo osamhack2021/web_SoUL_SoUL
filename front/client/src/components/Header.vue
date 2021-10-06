@@ -7,7 +7,7 @@
 				<router-link to="/sonagi"><img src="../assets/home1.png" alt="home" class="iconsize iconbox"></router-link>
 				<a href="#"><img src="../assets/follower1.png" alt="follower" class="iconsize iconbox"></a>
 				<a href="#"><img src="../assets/bookmark1.png" alt="bookmark" class="iconsize iconbox"></a>
-				<router-link to="/mypage" id="profileIcon" class="iconbox">H</router-link>
+				<router-link to="/mypage/sonagi" id="profileIcon" class="iconbox">H</router-link>
 				<div class="dropdown">
 					<a class="btn" href="#" role="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false">
 						<img src="../assets/write1.png"	alt="write" class="iconsize"></a>
@@ -38,55 +38,6 @@
 
 	}
 </script>	
-
-<style scope>
-#header {
-		position: absolute;
-		width: 100%;
-		left: 0;
-		top: 0;
-		z-index: 999;
-		/* border-bottom: 1px solid; */
-	}
-	#header .inner {
-		width: 42.1875rem;
-		height: 6.25rem;
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-	#header .inner a:active {	opacity: 0.7;}
-	#header .inner #logosize{	width: 9.375em;	}
-	#header #right-icon {
-		/* width: 11.875rem; */
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-	#header #right-icon a:visited {color: black;}
-	#header #right-icon #profileIcon{
-		display: inline-block;
-		border: 0.125rem solid black;
-		border-radius: 50%;
-		color: black;
-		text-decoration: none;
-		width: 1.8125rem;
-		height: 1.8125rem;
-		text-align: center;
-		font-size: 1rem;
-		font-weight: bold;
-		margin: 6px;
-	}
-	#header #right-icon .iconsize{ width: 1.75em;	}
-	#header #right-icon .iconbox{	margin: 6px; }
-	#header #right-icon #writecontent{ padding: 6px; }
-	.dropdown-item:active {	background-color: #C4C4C4; }
-	.btn:focus,.btn:active {outline: none !important; box-shadow: none;}
-	.dropdown-menu {min-width: fit-content;}
-	.dropdown-item {text-align: center;}
-</style>
-
 
 <style>
 	#main-contaniner {position: relative;	top: 7.5rem;}
@@ -160,4 +111,52 @@
 		background: #C4C4C4;
 		color: #FFFFFF;
 	}
+</style>
+
+<style scope>
+#header {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 0;
+		z-index: 999;
+		/* border-bottom: 1px solid; */
+	}
+	#header .inner {
+		width: 42.1875rem;
+		height: 6.25rem;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	#header .inner a:active {	opacity: 0.7;}
+	#header .inner #logosize{	width: 9.375em;	}
+	#header #right-icon {
+		/* width: 11.875rem; */
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	#header #right-icon a:visited {color: black;}
+	#header #right-icon #profileIcon{
+		display: inline-block;
+		border: 0.125rem solid black;
+		border-radius: 50%;
+		color: black;
+		text-decoration: none;
+		width: 1.8125rem;
+		height: 1.8125rem;
+		text-align: center;
+		font-size: 1rem;
+		font-weight: bold;
+		margin: 6px;
+	}
+	#header #right-icon .iconsize{ width: 1.75em;	}
+	#header #right-icon .iconbox{	margin: 6px; }
+	#header #right-icon #writecontent{ padding: 6px; }
+	.dropdown-item:active {	background-color: #C4C4C4; }
+	.btn:focus,.btn:active {outline: none !important; box-shadow: none;}
+	.dropdown-menu {min-width: fit-content;}
+	.dropdown-item {text-align: center;}
 </style>

@@ -1,22 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from "../views/Home.vue"
+import Login from "../views/Login.vue"
 import Footer from "../components/Footer.vue"
 import Header from "../components/Header.vue"
-import Mypage from "../components/Mypage.vue"
-import WriteSonagi from "../views/WriteSonagi.vue"
-import WriteFootprint from "../views/WriteFootprint.vue"
-import WriteBook from "../views/WriteBook.vue"
-import WriteMunhak from "../views/WriteMunhak.vue"
-import Main from "../components/Main.vue"
-import Mysonagi from "../views/Mysonagi.vue"
-import Myfootprint from "../views/Myfootprint.vue"
-import Mybook from "../views/Mybook.vue"
-import Mymunhak from "../views/Mymunhak.vue"
-import Mainsonagi from "../views/Mainsonagi"
-import Mainfootprint from "../views/Mainfootprint"
-import Mainbook from "../views/Mainbook"
-import Mainmunhak from "../views/Mainmunhak"
-import Questions from "../views/Questions"
+import Main from "../views/main/Main.vue"
+import Mainsonagi from "../views/main/Mainsonagi"
+import Mainfootprint from "../views/main/Mainfootprint"
+import Mainbook from "../views/main/Mainbook"
+import Mainmunhak from "../views/main/Mainmunhak"
+import Mypage from "../views/mypage/Mypage.vue"
+import Mysonagi from "../views/mypage/Mysonagi.vue"
+import Questions from "../views/mypage/Questions"
+import Myfootprint from "../views/mypage/Myfootprint.vue"
+import Mybook from "../views/mypage/Mybook.vue"
+import Mymunhak from "../views/mypage/Mymunhak.vue"
+import WriteSonagi from "../views/write/WriteSonagi.vue"
+import WriteFootprint from "../views/write/WriteFootprint.vue"
+import WriteBook from "../views/write/WriteBook.vue"
+import WriteMunhak from "../views/write/WriteMunhak.vue"
 
 const routes = [
 	{
@@ -26,6 +27,11 @@ const routes = [
 			default: Home,
 			footer: Footer
 		}
+	},
+	{
+		path: '/login', 
+		name: 'login', 
+		component: Login
 	},
 	{
 		path: '/',

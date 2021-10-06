@@ -1,7 +1,7 @@
 <template>
 	<div id="main-contaniner">
 		<section id="profile-box">
-			<img class="iconsize" src="../assets/profile-tmp.png" />
+			<img class="iconsize" src="../../assets/profile-tmp.png" />
 			<div id="profile-information">
 				<p class="name">{{ username }}</p>
 				<p class="intro">{{ userintro }}</p>
@@ -10,17 +10,13 @@
 		</section>
 		<div id="mycontents">
 			<div id="box-button-content">
-				<!-- <a class="fontCenter" href="#" v-on:click="selectedButton(this)"></a>
-				<a class="fontCenter" href="#"><span class="button-default button-content selectedbutton">발자국</span></a>
-				<a class="fontCenter" href="#"><span class="button-default button-content selectedbutton">독후감</span></a>
-				<a class="fontCenter" href="#"><span class="button-default button-content selectedbutton">문학</span></a> -->
 				<router-link class="fontCenter" to="/mypage/sonagi"><span class="button-default button-content selectedbutton">소나기</span></router-link>
 				<router-link class="fontCenter" to="/mypage/footprint"><span class="button-default button-content selectedbutton">발자국</span></router-link>
 				<router-link class="fontCenter" to="/mypage/book"><span class="button-default button-content selectedbutton">독후감</span></router-link>
 				<router-link class="fontCenter" to="/mypage/munhak"><span class="button-default button-content selectedbutton">문학</span></router-link>
 			</div>
 			<section id="content-header"></section>
-			<section id="content-box"><!-- 안에 컨텐츠별 글 상자 나오게 구성-->
+			<section><!-- 안에 컨텐츠별 글 상자 나오게 구성-->
 					<router-view></router-view>
 			</section>
 		</div>
@@ -98,13 +94,6 @@
 		height: 2.5rem;
 		margin: 0.5rem 0;
 		
-		border: 1px solid;
-	}
-	#mycontents #content-box {
-		display: flex;
-		position: relative;
-		width: 42.5rem;
-		height: 28.125rem; /*나중에 없애기*/
 		border: 1px solid;
 	}
 	.button-default {
