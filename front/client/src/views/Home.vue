@@ -2,7 +2,7 @@
 	<div id="main-container">
 		<div id="inner">
 			<img id="logo" src="../assets/logo.png" alt="logo">
-			<router-link to="" id="login-button">로그인</router-link>
+			<router-link to="/login" id="login-button">로그인</router-link>
 			<section class="tmp">추천 컨텐츠 글</section>
 		</div>
 	</div>
