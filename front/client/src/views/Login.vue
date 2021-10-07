@@ -1,7 +1,7 @@
 <template>
 	<div class="outline">
 		<div class="login">
-			<img class="comm__title" src="../assets/logo.png" width="360"/>
+			<img class="comm__title" src="../assets/logo1.png" width="380"/>
 			<div class="ipt__box">
 					<input type="text" class="ipt" placeholder="ID" v-model="user.id">
 			</div>
@@ -10,42 +10,46 @@
 			</div>
 			<div class="btn__box">
 				<div class="ipt__btn">
-					<a href="#" class="btn btn--confirm btn--large" v-on:click="false">SIGN UP</a>
+					<a href="#" id="byn--signup" class="btn  btn--large button-submit" v-on:click="test()">SIGN UP</a>
 				</div>
 				<div class="ipt__btn">
-					<a href="#" class="btn btn--confirm btn--large" v-on:click="login()">LOGIN</a>
+					<a href="#" class="btn btn--confirm btn--large button-submit" v-on:click="test()" :disabled="(user.id == 'ID') || (user.password == 'Password')">LOGIN</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-    export default  {
-        data() {
-            return {
-                user : {
-                    id : '',
-                    password : ''
-                }
-            }
-        },
-        methods : {
-            login : function () {
-                if (this.user.id == '') {alert('아이디를 입력해주세요.');return;}
-                if (this.user.password == '') {alert('비밀번호를 입력해주세요.');return;}
-                this.$http.post('/api/login', {user:this.user}).then((response) => {
-                    if (response.data.success == true) {
-                        alert(response.data.message);
-                        this.$router.push('/list'); //로그인 성공시 list 페이지로 이동
-                    } else {
-                        alert(response.data.message);
-                    }
-                });
-            }
-        },
-        created () {
-        }
-    }
+	export default  {
+		data() {
+			return {
+				user : {
+					id : '',
+					password : ''
+				}
+			}
+		},
+		methods : {
+			login : function () {
+				if (this.user.id == '') {alert('아이디를 입력해주세요.');return;}
+				if (this.user.password == '') {alert('비밀번호를 입력해주세요.');return;}
+				this.$http.post('/api/login', {user:this.user}).then((response) => {
+					if (response.data.success == true) {
+						alert(response.data.message);
+						this.$router.push('/sonagi'); //로그인 성공시 list 페이지로 이동
+					} else {
+						alert(response.data.message);
+					}
+				});
+			},
+			test: function() {
+				return 0;
+			}
+		},
+			created () {
+				
+			}
+		}
 </script>
 
 <style scoped>
@@ -54,11 +58,11 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%,-105%);
+		transform: translate(-50%,-95%);
 		justify-items: center;
 	}
 	.login .comm__title {
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 	}
 	.login .ipt__box {
 		margin: 0.25rem;
@@ -69,8 +73,21 @@
 	}
 	.login .btn__box {
 		display: flex;
+		justify-content: space-between;
+		width: 300px;
+	}
+	.btn {
+		background-color: #C4C4C4;
+		color: white;
+		margin-top: 10px;
+	}
+	.btn :active {
+		opacity: 0.8;
 	}
 	.btn--large {
-		width: 130px;
+		width: 145px;
+	}
+	#btn--signup {
+		background-color: #C4C4C4;
 	}
 </style>

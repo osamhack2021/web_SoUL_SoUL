@@ -48,8 +48,6 @@
 		box-shadow: 0 1px 1px black;
 	}
 	#button-submit:active {
-		/* opacity: 0.8; */
-		/* border: 1px solid rgba(196,196,196,0.4); */
 		outline: none;
 		transform: translateY(2px);
 		box-shadow: none;

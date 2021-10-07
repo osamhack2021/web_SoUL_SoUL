@@ -1,7 +1,7 @@
 <template>
 	<div id="main-container">
 		<div id="inner">
-			<img id="logo" src="../assets/logo.png" alt="logo">
+			<img id="logo" src="../assets/logo1.png" alt="logo">
 			<router-link to="/login" id="login-button">로그인</router-link>
 			<section class="tmp">추천 컨텐츠 글</section>
 		</div>
@@ -33,8 +33,7 @@
 		/* border: 1px solid; */
 	}
 	#inner #logo {
-		width: 353px;
-		height: 176px;
+		width: 380px;
 	}
 	#inner #login-button {
 		width: 8.75rem;
