@@ -5,7 +5,7 @@
 				<div style="font-size: 1.25rem;">{{ bookTitle }}</div>
 			<div>{{ bookAuthor }}</div></div>
 			<div class="date-box">{{ contentDate }}</div>
-	</a>
+		</a>
 	</section>
 </template>
 

@@ -77,7 +77,7 @@
 		margin-left: auto;
 		top: 0.375rem;
 		right: 0.375rem;
-		line-height: 1.75rem;
+		/* line-height: 1.75rem; */
 	}
 	#mycontents {
 		position: relative;

@@ -6,6 +6,10 @@
 				<router-link to="/questions">발자국</router-link>
 				<router-link to="/book">독후감</router-link>
 				<router-link to="/munhak">문학</router-link>
+				<!-- <router-link to="/postsonagi">소나기</router-link>
+				<router-link to="/postfootprint">발자국</router-link>
+				<router-link to="/postbook">독후감</router-link>
+				<router-link to="/postmunhak">문학</router-link> -->
 			</div>
 			<div id="contents-box">
 				<router-view></router-view>
