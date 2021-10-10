@@ -1,7 +1,6 @@
 <template>
 	<section>
-		<a href="#" class="content">{{ mainText }}<div class="date-box">{{ contentDate }}</div></a>
-		<a href="#" class="content">{{ mainText }}<div class="date-box">{{ contentDate }}</div></a>
+		<router-link to="/postsonagi" class="content"><div class="date-box">{{ contentDate }}</div><div class="maintext-box">{{ mainText }}</div></router-link>
 	</section>
 </template>
 
@@ -17,21 +16,30 @@
 </script>
 
 <style scoped>
+	a {
+		padding: 4px 12px 8px 12px !important
+	}
 	.content {
 		display: block;
 		width: 42.5rem;
 		border: 1px solid rgba(196, 196, 196, 0.8);
 		border-radius: 5px;
 		padding: 0.6rem 0.8rem 0.5rem;
-		margin: 0 auto 0.5rem;
+		margin: 0.5rem auto;
 		background-color: rgba(196, 196, 196, 0.3);
 		color: black !important;
 	}
 	.content:active {
 		opacity: 0.8;
 	}
+	.content .maintext-box {
+		display: -webkit-box;
+		-webkit-line-clamp: 7; /*줄 넘어가면 잘라주는 웹킷*/
+		-webkit-box-orient: vertical; /*줄 넘어가면 잘라주는 웹킷*/
+		overflow: hidden;
+	}
 	.content .date-box {
-		text-align: right;
-    font-size: 0.875rem;
+		font-size: 1.25rem;
+		margin-bottom: 0.25rem;
 	}
 </style>

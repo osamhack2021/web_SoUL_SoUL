@@ -6,7 +6,7 @@
 				<p class="name">{{ username }}</p>
 				<p class="intro">{{ userintro }}</p>
 			</div>
-			<div id="button-edit" class="button-default"><a class="fontCenter" href="#">프로필 수정</a></div>
+			<div id="button-edit" class="button-default"><a class="fontCenter" href="#" style="font-size: 14px; line-height: 26px">프로필 수정</a></div>
 		</section>
 		<div id="mycontents">
 			<div id="box-button-content">

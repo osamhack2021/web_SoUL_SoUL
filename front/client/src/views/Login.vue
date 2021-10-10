@@ -1,7 +1,7 @@
 <template>
 	<div class="outline">
 		<div class="login">
-			<img class="comm__title" src="../assets/logo1.png" width="380"/>
+			<img class="comm__title" src="../assets/logo1.png" width="300"/>
 			<div class="ipt__box">
 					<input type="text" class="ipt" placeholder="ID" v-model="user.id">
 			</div>
@@ -59,7 +59,7 @@
 		justify-items: center;
 	}
 	.login .comm__title {
-		margin-bottom: 1rem;
+		margin-bottom: 3rem;
 	}
 	.login .ipt__box {
 		margin: 0.25rem;
