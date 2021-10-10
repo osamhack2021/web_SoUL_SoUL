@@ -64,6 +64,7 @@
 		display: block;
 		padding: 1rem 1rem 0.5rem;
 		border: 2px solid #C4C4C4;
+		border-radius: 4px;
 	}
 	#post-box .title-box {
 		margin: 0 auto;

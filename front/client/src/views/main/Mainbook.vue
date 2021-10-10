@@ -50,7 +50,6 @@
 	#content-box .date-box {
 		text-align: right;
 		font-size: 0.875rem;
-		/* padding-right: 0.8rem; */
-		padding-bottom: 0.5rem;
+		padding: 0.5rem 0;
 	}
 </style>

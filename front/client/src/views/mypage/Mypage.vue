@@ -10,10 +10,10 @@
 		</section>
 		<div id="mycontents">
 			<div id="box-button-content">
-				<router-link class="fontCenter" to="/mypage/sonagi"><span class="button-default button-content selectedbutton">소나기</span></router-link>
-				<router-link class="fontCenter" to="/mypage/footprint"><span class="button-default button-content selectedbutton">발자국</span></router-link>
-				<router-link class="fontCenter" to="/mypage/book"><span class="button-default button-content selectedbutton">독후감</span></router-link>
-				<router-link class="fontCenter" to="/mypage/munhak"><span class="button-default button-content selectedbutton">문학</span></router-link>
+				<router-link class="fontCenter" to="/mypage/sonagi" @click="changeBtn(1)"><span :class="{ gray: btn == 1}" class="button-default button-content">소나기</span></router-link>
+				<router-link class="fontCenter" to="/mypage/footprint" @click="changeBtn(2)"><span :class="{ gray: btn == 2}" class="button-default button-content">발자국</span></router-link>
+				<router-link class="fontCenter" to="/mypage/book" @click="changeBtn(3)"><span :class="{ gray: btn == 3}" class="button-default button-content">독후감</span></router-link>
+				<router-link class="fontCenter" to="/mypage/munhak" @click="changeBtn(4)"><span :class="{ gray: btn == 4}" class="button-default button-content">문학</span></router-link>
 			</div>
 			<section id="content-header"></section>
 			<section><!-- 안에 컨텐츠별 글 상자 나오게 구성-->
@@ -31,23 +31,32 @@
 			return {
 				username: "Dongu", 
 				userintro: "Nice to meet you!",
+				btn: 1
 			};
 		},
 		methods: {
-			selectedButton(obj){
-				obj.style.background = "#C4C4C4";
+			// selectedButton(n){
+			// 	if(n == 1) {
+			// 		console.log(n);
+			// 		this.$refs.bt1.style.backgroundColor = "#C4C4C4";
+			// 	}
+			// 	else if(n == 2) {
+			// 		console.log(n);
+			// 		this.$refs.bt2.style.backgroundColor = "#C4C4C4";
+			// 	}
+			// }
+			changeBtn(n){
+				this.btn = n;
 			}
-		}
+		},
 		// computed: {
-		// 	user() {
-		// 		return this.$store.state.user;
-		// 	}
+
 		// }
 	}
 </script>
 
 <style scope>
-	#main-contaniner a:link, a:visited, a:hover { color: #AFAFAF; text-decoration: none;}
+	#main-contaniner a:link, a:visited, a:hover { color: gray; text-decoration: none;}
 	#profile-box a:active { text-decoration:none; opacity: 0.8;}
 	#profile-box {
 		position: relative;
@@ -116,5 +125,9 @@
 		top: 0;
 		right: 0;
 		line-height: 2.375rem;
+	}
+	.gray {
+		background-color: #C4C4C4;
+		color: white;
 	}
 </style>

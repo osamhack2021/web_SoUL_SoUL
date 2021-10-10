@@ -114,8 +114,8 @@
 </style>
 
 <style scope>
-#header {
-		position: absolute;
+	#header {
+		position: fixed;
 		width: 100%;
 		left: 0;
 		top: 0;

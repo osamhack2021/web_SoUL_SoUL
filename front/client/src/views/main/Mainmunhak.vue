@@ -40,11 +40,12 @@
 	}
 	#content-box p { margin: 0; }
 	#content-box #in-header {
-		display: grid;
+		display: flex;
+		justify-content: space-between;
 		align-items: center;
-		margin: 0.5rem 0;
+		margin: 0.5rem auto;
 	}
-	#content-box #in-header .title { font-size: 1.25rem; margin: 0 auto; }
+	#content-box #in-header .title { font-size: 1.25rem;}
 	#content-box #in-header .nickname { font-size: 1rem; text-align: right;}
 	#content-box .maintext-box {
 		display: -webkit-box;
@@ -55,6 +56,6 @@
 	#content-box .date-box {
 		text-align: right;
 		font-size: 0.875rem;
-		padding-bottom: 0.5rem;
+		padding: 0.5rem 0;
 	}
 </style>

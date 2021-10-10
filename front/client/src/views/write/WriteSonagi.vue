@@ -45,7 +45,7 @@
 
 <style>
 	#button-submit {
-		box-shadow: 0 1px 1px black;
+		box-shadow: 0 1px 2px black;
 	}
 	#button-submit:active {
 		outline: none;
@@ -54,6 +54,9 @@
 	}
 	#button-submit:focus {
 		outline: none;
+	}
+	#writing-box-footer .form-check-input {
+		border: 2px solid #C4C4C4;
 	}
 </style>
 <style scoped>	

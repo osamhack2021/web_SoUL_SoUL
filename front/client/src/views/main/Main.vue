@@ -2,10 +2,10 @@
 	<div>
 		<section id="main-inner">
 			<div id="sidebar-box">
-				<router-link to="/sonagi">소나기</router-link>
-				<router-link to="/questions">발자국</router-link>
-				<router-link to="/book">독후감</router-link>
-				<router-link to="/munhak">문학</router-link>
+				<router-link to="/sonagi"><img class="iconsize" @click="selected = [1, 0, 0, 0]" :src="imgsrc[0][selected[0]]" alt="sonagi"/></router-link>
+				<router-link to="/questions"><img class="iconsize" @click="selected = [0, 1, 0, 0]" :src="imgsrc[1][selected[1]]" alt="footprint" /></router-link>
+				<router-link to="/book"><img class="iconsize" @click="selected = [0, 0, 1, 0]" :src="imgsrc[2][selected[2]]" alt="book"/></router-link>
+				<router-link to="/munhak"><img class="iconsize" @click="selected = [0, 0, 0, 1]" :src="imgsrc[3][selected[3]]" alt="munhak"/></router-link>
 				<!-- <router-link to="/postsonagi">소나기</router-link>
 				<router-link to="/postfootprint">발자국</router-link>
 				<router-link to="/postbook">독후감</router-link>
@@ -19,9 +19,19 @@
 </template>
 
 <script>
-	// import Header from "../components/Header.vue"
-	
 	export default {
+		data() {
+			return {
+				selected : [1, 0, 0, 0],
+				on: 1,
+				imgsrc : [
+				[require("../../assets/rain1.png"), require("../../assets/rain2.png")],
+					[require("../../assets/footprint1.png"), require("../../assets/footprint2.png")],
+						[require("../../assets/book1.png"), require("../../assets/book2.png")],
+						[require("../../assets/munhak1.png"), require("../../assets/munhak2.png")]
+				]
+			};
+		}, 
 		// components: {Header },
 		// computed: {
 		// 	user() {
@@ -32,6 +42,10 @@
 </script>
 
 <style scoped>
+	#main-inner #sidebar-box .iconsize {
+		width: 45px;
+		height: 45px;
+	}
 	a:active {
 		opacity: 0.5;
 	}
@@ -43,15 +57,10 @@
 		margin: 0 auto;
 	}
 	#main-inner #sidebar-box {
-		position: absolute;
+		position: fixed;
 		display: flex;
-		margin: 1rem 0 0;
-		/* width: 50px; */
-		/* height:100px; */
+		margin: -10px 24px 0;
 		flex-direction: column;
-		/* width: 48.75rem;
-		margin: 0 auto;
-		border: 1px solid red; */
 	}
 	#sidebar-box a:first-child {
 		margin-top: 0.25rem;
@@ -60,8 +69,6 @@
 		color: black;
 		text-decoration: none;
 		margin-bottom: 1.5rem;
-		/* border: 2px solid #C4C4C4;
-		border-radius: 10px; */
 		font-size: 20px;
 		font-weight: bold;
 		text-align: center;
@@ -70,11 +77,8 @@
 		color: black;
 	}
 	#main-inner #contents-box {
-		/* position: absolute; */
-		/* border: 1px solid; */
 		width: 43.75rem;
 		height: 1700px;
-		
 		margin: 0 auto;
 		justify-content: center;
 		align-items: center;

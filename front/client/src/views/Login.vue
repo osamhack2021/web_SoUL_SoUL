@@ -13,7 +13,7 @@
 					<a href="#" id="byn--signup" class="btn  btn--large button-submit" v-on:click="test()">SIGN UP</a>
 				</div>
 				<div class="ipt__btn">
-					<a href="#" class="btn btn--confirm btn--large button-submit" v-on:click="test()" :disabled="(user.id == 'ID') || (user.password == 'Password')">LOGIN</a>
+					<a href="#" class="btn btn--confirm btn--large button-submit" v-on:click="login()">LOGIN</a>
 				</div>
 			</div>
 		</div>
@@ -46,10 +46,7 @@
 				return 0;
 			}
 		},
-			created () {
-				
-			}
-		}
+	}
 </script>
 
 <style scoped>
