@@ -2,17 +2,14 @@
 <div>
 	<header id="header">
 		<section class="inner">
-			<router-link to="/home"><img id="logosize" src="../assets/logo2.png" alt=""></router-link>
+			<button @click="toHome" id="logo"><img src="../assets/logo2.png" alt=""></button>
 			<div id="right-icon">
 				<router-link to="/sonagi"><img @click="selected = [1, 0, 0, 0]" :src="imgsrc[0][selected[0]]" alt="home" class="iconsize iconbox"></router-link>
 				<a href="#"><img @click="selected = [0, 1, 0, 0]" :src="imgsrc[1][selected[1]]" alt="follower" class="iconsize iconbox"></a>
 				<a href="#"><img @click="selected = [0, 0, 1, 0]" :src="imgsrc[2][selected[2]]" alt="bookmark" class="iconsize iconbox"></a>
-				<router-link @click="selected = [0, 0, 0, 0]" to="/mypage/sonagi" id="profileIcon" class="iconbox">H</router-link>
+				<router-link @click="selected = [0, 0, 0, 0]" to="/mypage/sonagi" id="profileIcon" class="iconbox">{{ userinitial }}</router-link>
 				<div class="dropdown">
-					<button @click="selected = [0, 0, 0, 0]" class="btn" type="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false">
-					<!-- <a class="btn" href="#" role="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false"> -->
-						<!-- <img @click="selected = [0, 0, 0, 1]" :src="imgsrc[3][selected[3]]"	alt="write" class="iconsize"></button> -->
-					</button>
+					<button @click="selected = [0, 0, 0, 0]" class="btn" type="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false"></button>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="writecontent">
 						<router-link class="dropdown-item" to="/writesonagi">소나기</router-link>
 						<router-link class="dropdown-item" to="/writefootprint">발자국</router-link>
@@ -34,7 +31,7 @@
 		name: 'header',
 		data() {
 			return {
-				username: 'H',
+				userinitial: '',
 				selected : [1, 0, 0, 0],
 				isshow: true,
 				imgsrc : [
@@ -45,7 +42,19 @@
 				]
 			};
 		},
-
+		methods: {
+			toHome() {
+				let islogin = this.$store.state.islogin;
+				if(islogin) {console.log("login O"); this.$router.replace('/sonagi'); this.selected = [1, 0, 0, 0];}
+				else {console.log("login X"); this.$router.replace('home');}
+			},
+			getInitial() {
+				this.userinitial = this.$store.getters.getInitial;
+			},
+		}, 
+		created() {
+			this.getInitial();
+		}
 	}
 </script>	
 
@@ -141,7 +150,9 @@
 		align-items: center;
 	}
 	#header .inner a:active {	opacity: 0.7;}
-	#header .inner #logosize{	width: 9.375em;	}
+	#header .inner #logo{	border: none; background: none;}
+	#header .inner #logo img{ width: 9.375rem;}
+	/* #header .inner button{ outline: none;} */
 	#header #right-icon {
 		/* width: 11.875rem; */
 		display: flex;

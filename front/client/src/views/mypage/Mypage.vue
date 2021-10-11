@@ -6,7 +6,7 @@
 				<p class="name">{{ username }}</p>
 				<p class="intro">{{ userintro }}</p>
 			</div>
-			<div id="button-edit" class="button-default"><a class="fontCenter" href="#" style="font-size: 14px; line-height: 26px">프로필 수정</a></div>
+			<div id="button-edit" class="button-default"><router-link class="fontCenter" to="/editprofile" style="font-size: 14px; line-height: 26px">프로필 수정</router-link></div>
 		</section>
 		<div id="mycontents">
 			<div id="box-button-content">
@@ -29,29 +29,27 @@
 		// components: { },
 		data() {
 			return {
-				username: "Dongu", 
+				nickname: "",
 				userintro: "Nice to meet you!",
-				btn: 1
+				// btn: 1
 			};
 		},
-		methods: {
-			// selectedButton(n){
-			// 	if(n == 1) {
-			// 		console.log(n);
-			// 		this.$refs.bt1.style.backgroundColor = "#C4C4C4";
-			// 	}
-			// 	else if(n == 2) {
-			// 		console.log(n);
-			// 		this.$refs.bt2.style.backgroundColor = "#C4C4C4";
-			// 	}
-			// }
-			changeBtn(n){
-				this.btn = n;
+		computed: {
+			btn() {
+				return this.$store.state.mypageBtn;
 			}
 		},
-		// computed: {
-
-		// }
+		created() {
+			this.getNickname();
+		},
+		methods: {
+			changeBtn(btn){
+				this.$store.commit('selectedMyBtn', btn);
+			},
+			getNickname() {
+				this.nickname = this.$store.getters.getNickname;
+			}
+		},
 	}
 </script>
 
@@ -127,7 +125,7 @@
 		line-height: 2.375rem;
 	}
 	.gray {
-		background-color: #C4C4C4;
+		background-color: #C4C4C4 !important;
 		color: white;
 	}
 </style>

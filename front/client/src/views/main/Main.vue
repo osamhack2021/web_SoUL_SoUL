@@ -52,7 +52,7 @@
 	#main-inner {
 		position: relative;
 		display: flex;
-		top: 7.5rem;
+		top: 8rem;
 		width: 900px;
 		margin: 0 auto;
 	}

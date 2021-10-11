@@ -14,6 +14,7 @@ import Mysonagi from "../views/mypage/Mysonagi.vue"
 import Myfootprint from "../views/mypage/Myfootprint.vue"
 import Mybook from "../views/mypage/Mybook.vue"
 import Mymunhak from "../views/mypage/Mymunhak.vue"
+import EditProfile from '../views/mypage/EditProfile.vue'
 import WriteSonagi from "../views/write/WriteSonagi.vue"
 import WriteFootprint from "../views/write/WriteFootprint.vue"
 import WriteBook from "../views/write/WriteBook.vue"
@@ -64,6 +65,14 @@ const routes = [
 			{ path: 'book', component: Mybook },
 			{ path: 'munhak', component: Mymunhak }
 		],
+	},
+	{
+		path: '/editprofile',
+		name: 'EditProfile',
+		components: {
+			default: EditProfile,
+			header: Header
+		}
 	},
 	{
 		path: '/writesonagi',

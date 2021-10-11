@@ -1,123 +1,188 @@
 <template>
-	<div id="main-contaniner">
-		<section id="profile-box">
-			<img class="iconsize" src="../../assets/profile-tmp.png" />
-			<div id="profile-information">
-				<p class="name">{{ username }}</p>
-				<p class="intro">{{ userintro }}</p>
+<div>
+	<header id="header">
+		<section class="inner">
+			<button @click="toHome" id="logo"><img src="../assets/logo2.png" alt=""></button>
+			<div id="right-icon">
+				<router-link to="/sonagi"><img @click="selected = [1, 0, 0, 0]" :src="imgsrc[0][selected[0]]" alt="home" class="iconsize iconbox"></router-link>
+				<a href="#"><img @click="selected = [0, 1, 0, 0]" :src="imgsrc[1][selected[1]]" alt="follower" class="iconsize iconbox"></a>
+				<a href="#"><img @click="selected = [0, 0, 1, 0]" :src="imgsrc[2][selected[2]]" alt="bookmark" class="iconsize iconbox"></a>
+				<router-link @click="selected = [0, 0, 0, 0]" to="/mypage/sonagi" id="profileIcon" class="iconbox">H</router-link>
+				<div class="dropdown">
+					<button @click="selected = [0, 0, 0, 0]" class="btn" type="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false"></button>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="writecontent">
+						<router-link class="dropdown-item" to="/writesonagi">소나기</router-link>
+						<router-link class="dropdown-item" to="/writefootprint">발자국</router-link>
+						<router-link class="dropdown-item" to="/writebook">독후감</router-link>
+						<router-link class="dropdown-item" to="/writemunhak">문학</router-link>
+						</ul>
+				</div>
 			</div>
-			<div id="button-edit" class="button-default"><a class="fontCenter" href="#" style="font-size: 14px; line-height: 26px">프로필 수정</a></div>
 		</section>
-		<div id="mycontents">
-			<div id="box-button-content">
-				<router-link class="fontCenter" to="/mypage/sonagi" @click="changeBtn(1)"><span :class="{ gray: this.$store.Mypagebtn == 1}" class="button-default button-content">소나기</span></router-link>
-				<router-link class="fontCenter" to="/mypage/footprint" @click="changeBtn(2)"><span :class="{ gray: this.$store.Mypagebtn == 2}" class="button-default button-content">발자국</span></router-link>
-				<router-link class="fontCenter" to="/mypage/book" @click="changeBtn(3)"><span :class="{ gray: this.$store.Mypagebtn == 3}" class="button-default button-content">독후감</span></router-link>
-				<router-link class="fontCenter" to="/mypage/munhak" @click="changeBtn(4)"><span :class="{ gray: this.$store.Mypagebtn == 4}" class="button-default button-content">문학</span></router-link>
-			</div>
-			<section id="content-header"></section>
-			<section><!-- 안에 컨텐츠별 글 상자 나오게 구성-->
-					<router-view></router-view>
-			</section>
-		</div>
-	</div>
+	</header>
+</div>
 </template>
 
 <script>
-
+	// import Home from '../views/Home.vue'
+	// import Mypage from '../components/Mypage.vue'
 	export default {
-		// components: { },
+		// components: {Home, Mypage},
+		name: 'header',
 		data() {
 			return {
-				username: "Dongu", 
-				userintro: "Nice to meet you!",
-				// btn: 1
+				username: 'H',
+				selected : [1, 0, 0, 0],
+				isshow: true,
+				imgsrc : [
+					[require("../assets/home1.png"), require("../assets/home2.png")],
+						[require("../assets/follower1.png"), require("../assets/follower2.png")],
+							[require("../assets/bookmark1.png"), require("../assets/bookmark2.png")],
+							[require("../assets/write1.png"), require("../assets/write2.png")]
+				]
 			};
 		},
 		methods: {
-			changeBtn(n){
-				this.$store.commit('changeBtn', n);
+			toHome() {
+				let islogin = this.$store.state.islogin;
+				if(islogin) {console.log("login O"); this.$router.replace('/sonagi');}
+				else {console.log("login X"); this.$router.replace('home');}
 			}
-		},
-		// computed: {
-
-		// }
+		}
 	}
-</script>
+</script>	
 
-<style scope>
-	#main-contaniner a:link, a:visited, a:hover { color: gray; text-decoration: none;}
-	#profile-box a:active { text-decoration:none; opacity: 0.8;}
-	#profile-box {
-		position: relative;
+<style>
+	#main-contaniner {position: relative;	top: 7.5rem;}
+	#main-contaniner textarea {margin-left: 0.5rem; margin-right: 0.5rem;}
+	#writing-box {
+		display: grid;
+		top: 20px;
 		width: 42.5rem;
-		height: 8.75rem;
-		display: flex;
+		border: 2px solid #C4C4C4;
 		margin: 0 auto;
 	}
-	#profile-box #profile-information {
-		margin-left: 3.125rem;
+	input:focus, textarea:focus { outline:none;}
+	#writing-box textarea.autosize { min-height: 50px; }
+	#writing-box #maintext-box {
+		border: none;
+		resize: none;
+		/* overflow-y: hidden; */
 	}
-	#profile-box .iconsize {
-		width: 8.75rem;
-	}
-	#profile-box #profile-information .name {
-		font-size: 2.25rem;
-		margin: 0.3125rem 0;
-	}
-	#profile-box #profile-information .intro {
-		font-size: 1.25rem;
-		margin: 0;
-	}
-	#profile-box #button-edit {
-		border-radius: 5px;
-		width: 6.25rem;
-		height: 1.875rem;
-		margin-left: auto;
-		top: 0.375rem;
-		right: 0.375rem;
-		/* line-height: 1.75rem; */
-	}
-	#mycontents {
-		position: relative;
+	#main-contaniner #writing-box-footer {
 		width: 42.5rem;
-		margin: 1.5rem auto 0;
+		margin: 0 auto;
 	}
-	#mycontents #box-button-content {
+	#writing-box-footer #public-checkbox {
+		margin: 5px 0 0;
+	}
+	#writing-box-footer #public-checkbox #public:focus, #public:active {outline: none !important; box-shadow: none !important; border-color: #C4C4C4; fill: #C4C4C4}
+	#writing-box-footer #public-checkbox .form-check-input:checked{background-color: #C4C4C4; border-color: #C4C4C4;}
+	#writing-box-footer #public-checkbox .form-check-input:focus{
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+	}
+	#writing-box-footer #button-submit {
+		display: block;
+		border: 0.125rem solid #C4C4C4;
+		border-radius: 5px;
+		background: #C4C4C4;
+		color: #FFF;
+		font-size: 1.5rem;
+		margin: 5px auto;
+		width: 9.375rem;
+		height: 3.5rem;
+	}
+	#writing-box-footer #button-submit:disabled {
+		background: #FFFFFF;
+		color: #C4C4C4;
+	}
+	#writing-box-footer #button:active { opacity: 0.5; border: 0.0625rem solid #AFAFAF;}
+	.form-switch .form-check-input {
+		vertical-align: middle;
+    width: 3em;
+    height: 1.5em;
+		margin-top: 1.5px;
+	}
+	.form-switch .form-check-label {
+		font-size: 1.15rem;
+		margin: 0 0 0 0.5rem;
+	}
+	#date-box {
+		font-size: 0.875rem;
+		width: auto;
+		margin: 0;
+		padding-right: 0.8rem;
+		padding-bottom: 0.5rem;
+		text-align: right;
+		color: #C4C4C4;
+	}
+	.selectedbutton:active {
+		background: #C4C4C4;
+		color: #FFFFFF;
+	}
+	.selectedbutton:visited {
+		background: #C4C4C4;
+		color: #FFFFFF;
+	}
+</style>
+
+<style scope>
+	#header {
+		position: fixed;
+		width: 100%;
+		left: 0;
+		top: 0;
+		z-index: 999;
+		/* border-bottom: 1px solid; */
+	}
+	#header .inner {
+		width: 42.1875rem;
+		height: 6.25rem;
+		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
-	}
-	#mycontents #content-header {
-		position: relative;
-		width: 42.5rem;
-		height: 2.5rem;
-		margin: 0.5rem 0;
-		
-		border: 1px solid;
-	}
-	.button-default {
-		position: relative;
-		box-sizing: border-box;
-		border: 0.125rem solid #C4C4C4;
-		background: #fff;
-	}
-	.fontCenter {
-		display: block;
-		text-align: center;
-	}
-	.button-content {
-		display: flex;
-		justify-content: center;
 		align-items: center;
-		width: 8.125rem;
-		height: 2.5rem;
-		border-radius: 10px;
-		top: 0;
-		right: 0;
-		line-height: 2.375rem;
 	}
-	.gray {
-		background-color: #C4C4C4;
-		color: white;
+	#header .inner a:active {	opacity: 0.7;}
+	#header .inner #logo{	border: none; background: none;}
+	#header .inner #logo img{ width: 9.375rem;}
+	/* #header .inner button{ outline: none;} */
+	#header #right-icon {
+		/* width: 11.875rem; */
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	#header #right-icon a:visited {color: black;}
+	#header #right-icon #profileIcon{
+		display: inline-block;
+		border: 0.125rem solid black;
+		border-radius: 50%;
+		color: black;
+		text-decoration: none;
+		width: 1.8125rem;
+		height: 1.8125rem;
+		text-align: center;
+		font-size: 1rem;
+		font-weight: bold;
+		margin: 6px;
+	}
+	#header #right-icon .iconsize{ width: 1.75em;	}
+	#header #right-icon .iconbox{	margin: 6px; }
+	#header #right-icon #writecontent{ padding: 6px; }
+	.dropdown-item:active {	background-color: #C4C4C4; }
+	.btn:focus,.btn:active {outline: none !important; box-shadow: none;}
+	.dropdown-menu {min-width: fit-content;}
+	.dropdown-item {text-align: center;}
+	#writecontent {
+		background-image: url(../assets/write1.png);
+		width: 30px;
+		height: 32px;
+		background-size: 29px 29px;
+		background-repeat: no-repeat;
+		margin: 6px;
+	}
+	#writecontent:focus {
+		background-image: url(../assets/write2.png) !important;
 	}
 </style>
