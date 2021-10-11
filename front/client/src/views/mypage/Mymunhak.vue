@@ -1,11 +1,11 @@
 <template>
 	<section>
-		<a href="#" class="content">
+		<router-link to="/postmunhak" class="content">
 			<div>
 				<div id="title">{{ munhakTitle }}</div>
-			<div id="text">{{ mainText }}</div></div>
+			<div class="maintext-box">{{ mainText }}</div></div>
 			<div class="date-box">{{ contentDate }}</div>
-	</a>
+	</router-link>
 	</section>
 </template>
 
@@ -35,13 +35,19 @@
 	.content:active {
 		opacity: 0.8;
 	}
+	.content #title {
+		font-size: 1.125rem;
+		margin-bottom: 0.5rem;
+	}
+	.content .maintext-box {
+		display: -webkit-box;
+		-webkit-line-clamp: 7; /*줄 넘어가면 잘라주는 웹킷*/
+		-webkit-box-orient: vertical; /*줄 넘어가면 잘라주는 웹킷*/
+		overflow: hidden;
+	}
 	.content .date-box {
 		text-align: right;
     font-size: 0.875rem;
 		margin-top: 0.25rem;
-	}
-	.content #title {
-		font-size: 1.5rem;
-		margin-bottom: 0.5rem;
 	}
 </style>

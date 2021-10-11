@@ -3,9 +3,9 @@
 		<!-- <Header /> -->
 		<div id="main-contaniner">
 			<section id="writing-box-header">
-				<button id="button-poem" class="button-default button-clicked">시</button>
-				<button id="button-prose" class="button-default">산문</button>
-				<button id="button-novel" class="button-default">소설</button>
+				<button id="button-poem" @click="changeBtn(1)" :class="{ gray: btn == 1}" class="button-default button-clicked">시</button>
+				<button id="button-prose" @click="changeBtn(2)" :class="{ gray: btn == 2}" class="button-default">산문</button>
+				<button id="button-novel" @click="changeBtn(3)" :class="{ gray: btn == 3}" class="button-default">소설</button>
 			</section>
 			<section id="writing-box">
 				<input type="text" id="munhakTitle" placeholder="제목"/>
@@ -31,14 +31,18 @@
 		// components: {Header, },
 		data() {
 			return {
+				btn: 1,
 				Today: dayjs().format("YYYY-MM-DD"),
 				textValue: "",
 			};
 		}, 
 		methods: {
-			resize(obj) {
-				obj.style.height = "1px";
-				obj.style.height = (12 + obj.scrollHeight) + "px";
+			// resize(obj) {
+			// 	obj.style.height = "1px";
+			// 	obj.style.height = (12 + obj.scrollHeight) + "px";
+			// }
+			changeBtn(n){
+				this.btn = n;
 			}
 	}
 		// computed: {
@@ -48,6 +52,10 @@
 		// }
 	}
 </script>
+
+<style>
+	button:focus { outline: none;}
+</style>
 
 <style scoped>	
 	#main-contaniner #writing-box-header {
@@ -72,6 +80,10 @@
 		border-radius: 10px;
 		margin: 0 30px;
 		color: gray;
+	}
+	.gray {
+		background-color: #C4C4C4;
+		color: white !important;
 	}
 </style>
 

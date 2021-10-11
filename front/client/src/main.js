@@ -1,14 +1,23 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-// import axios from 'axios';
+import store from "./store"
 
-// Vue.prototype.$http = axios;
+const app = createApp(App)
+
+app.use(router)
+app.use(store)
+app.mount('#app')
+
+// import Vue from 'vue';
+// import App from './App.vue';
+// import router from './router';
+// import store from './store';
+
 // Vue.config.productionTip = false;
 
-createApp(App).use(router).mount('#app')
 // new Vue({
-//   el: '#app',
-//   render : h => h (App),
-//   router
-// });
+// 	router, 
+// 	store, 
+// 	render: (h) => h(App),
+// }).$mount('#app');

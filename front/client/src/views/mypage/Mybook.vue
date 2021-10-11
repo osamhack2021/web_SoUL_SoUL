@@ -1,11 +1,11 @@
 <template>
 	<section>
-		<a href="#" class="content">
+		<router-link to="/postbook" class="content">
 			<div id="head">
-				<div style="font-size: 1.25rem;">{{ bookTitle }}</div>
+				<div style="font-size: 1.125rem;">{{ bookTitle }}</div>
 			<div>{{ bookAuthor }}</div></div>
 			<div class="date-box">{{ contentDate }}</div>
-		</a>
+		</router-link>
 	</section>
 </template>
 

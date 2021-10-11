@@ -62,6 +62,7 @@
 		display: grid;
 		padding: 1rem;
 		border: 2px solid #C4C4C4;
+		border-radius: 4px;
 	}
 	#post-box .sonagi-date-box {
 		margin: 0 auto;

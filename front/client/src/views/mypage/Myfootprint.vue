@@ -1,9 +1,8 @@
 <template>
 	<section>
-		<a href="#" class="content">{{ question }}</a>
-		<a href="#" class="content">{{ question }}</a>
-		<a href="#" class="content">{{ question }}</a>
-		<a href="#" class="content">{{ question }}</a>
+		<router-link to="/postfootprint" class="content">{{ question }}</router-link>
+		<router-link to="/postfootprint" class="content">{{ question }}</router-link>
+		<router-link to="/postfootprint" class="content">{{ question }}</router-link>
 	</section>
 </template>
 
