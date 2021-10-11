@@ -1,3 +1,4 @@
+import sys
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,10 +27,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    # 'allauth',
-    # 'allauth.account',
+    'allauth',
+    'allauth.account',
     'accounts',
-    # 'post',
+    'post',
+    'webpack_loader',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'config', 'templates'),
+            # os.path.join(BASE_DIR, 'public'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -115,6 +119,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'config', 'static'),
+    # os.path.join(BASE_DIR, 'src', 'assets'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -125,3 +130,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': DEBUG,
+        'BUNDLE_DIR_NAME': '/bundles/',  # must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}

@@ -1,9 +1,15 @@
 {% extends "accounts/layout.html" %}
 {% load static %}
+
+
 {% block head %}
+
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
 {% endblock%}
+
+
+
 {% block content %}
 
 <div id="main_container">
@@ -37,7 +43,7 @@
 
             <div class="bottom_box">
                 <div>
-                    <a href="{% url 'accounts:signup' %}">회원가입</a>
+                    <span>아이디가 없으신가요?</span><a href="{% url 'accounts:signup' %}">회원가입</a>
                 </div>
             </div>
 

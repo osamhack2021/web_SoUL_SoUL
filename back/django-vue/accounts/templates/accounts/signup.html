@@ -1,10 +1,14 @@
 {% extends "accounts/layout.html" %}
+
 {% load static %}
+
 {% block head %}
 
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 
 {% endblock%}
+
+
 {% block content %}
 <div id="main_container">
 
@@ -23,7 +27,7 @@
 
             <div class="bottom_box">
                 <div>
-                    <span>아이디가 있으시다면</span><a href="{% url 'accounts:login' %}">로그인</a>
+                    <span>아이디가 있다면</span><a href="{% url 'accounts:login' %}">로그인</a>
                 </div>
             </div>
 
@@ -31,5 +35,9 @@
         </div>
 
     </div>
+
+
+
+
 
 {% endblock %}
