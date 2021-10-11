@@ -20,15 +20,24 @@
 
 <script>
 	import dayjs from "dayjs"
+	// import WriteFootprint from './WriteFootprint.vue'
 	
 	export default {
-		// components: {Header, },
+		// components: {WriteFootprint},
 		data() {
 			return {
 				Today: dayjs().format("YYYY-MM-DD"),
 				textValue: "",
-				Question: "가장 기억에 남는 순간은?"
+				Question: ""
 			};
+		},
+		created() {
+			this.getQuestion();
+		},
+		methods: {
+			getQuestion() {
+				this.Question = this.$store.getters.getQuestion;
+			}
 		}
 		// computed: {
 		// 	user() {

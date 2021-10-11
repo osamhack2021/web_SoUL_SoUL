@@ -4,12 +4,13 @@ export default createStore({
 	state() {
 		return{
 			_user: {
-				id: 'admin', 
+				id: 'admin',
 				pw: 1234,
 				nickname: "Hampeyong",
 			},
 			islogin: 0,
-			mypageBtn: 1
+			mypageBtn: 1, 
+			Question: ''
 		}
 	},
 	getters: {
@@ -21,6 +22,9 @@ export default createStore({
 		},
 		getNickname(state) {
 			return state._user.nickname;
+		}, 
+		getQuestion(state) {
+			return state.Question;
 		}
 	},
 	mutations: {

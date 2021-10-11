@@ -16,6 +16,7 @@ import Mybook from "../views/mypage/Mybook.vue"
 import Mymunhak from "../views/mypage/Mymunhak.vue"
 import EditProfile from '../views/mypage/EditProfile.vue'
 import WriteSonagi from "../views/write/WriteSonagi.vue"
+import WriteQues from "../views/write/WriteQues.vue"
 import WriteFootprint from "../views/write/WriteFootprint.vue"
 import WriteBook from "../views/write/WriteBook.vue"
 import WriteMunhak from "../views/write/WriteMunhak.vue"
@@ -79,6 +80,13 @@ const routes = [
 		name: 'WriteSonagi',
 		components: {
 			default: WriteSonagi, 
+			header: Header
+		}
+	},
+	{
+		path: '/writeques', 
+		components: {
+			default: WriteQues,
 			header: Header
 		}
 	},
