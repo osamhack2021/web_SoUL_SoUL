@@ -8,7 +8,7 @@
 			</section>
 			<section id="writing-box-footer">
 				<div id="public-checkbox" class="form-check form-switch">
-					<input class="form-check-input" type="checkbox" id="public">
+					<input class="form-check-input" type="checkbox" id="public" v-model="isPublic">
 					<label class="form-check-label" for="public">공개 여부</label>
 				</div>
 				<button id="button-submit" :disabled="textValue == ''">업로드</button>
@@ -27,6 +27,7 @@
 			return {
 				Today: dayjs().format("YYYY.MM.DD"),
 				textValue: "",
+				isPublic: false
 			};
 		}, 
 		methods: {

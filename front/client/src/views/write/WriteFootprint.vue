@@ -27,8 +27,16 @@
 			return {
 				Today: dayjs().format("YYYY-MM-DD"),
 				textValue: "",
-				Question: "가장 기억에 남는 순간은?"
+				Question: ""
 			};
+		}, 
+		methods: {
+			getQuestion(){
+				this.Question = this.$store.getters.getQuestion;
+			}
+		},
+		mounted() {
+			this.getQuestion();
 		}
 		// computed: {
 		// 	user() {

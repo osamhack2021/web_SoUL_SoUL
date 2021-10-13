@@ -36,7 +36,7 @@
 				usernum: '20-76060000'
 			};
 		},
-		created() {
+		mounted() {
 			this.getNickname();
 		},
 		methods: {
