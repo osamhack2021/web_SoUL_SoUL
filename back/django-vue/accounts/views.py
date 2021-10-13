@@ -28,7 +28,7 @@ def signup(request):
             status = 1
         else:
             profile.delete()
-            message = '회원가입 가입가능'
+            message = '회원가입 가능'
             status = 0
 
         context = {
@@ -74,11 +74,11 @@ def follow(request):
     follow, created = Follow.objects.get_or_create(from_user=from_user, to_user=to_user)
     
     if created:
-        message = '팔로우 시작!'
+        message = '구독 시작'
         status = 1
     else:
         follow.delete()
-        message = '팔로우 취소'
+        message = '구독 취소'
         status = 0
         
     context = {

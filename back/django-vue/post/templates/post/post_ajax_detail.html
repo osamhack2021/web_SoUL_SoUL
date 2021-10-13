@@ -109,7 +109,7 @@
                 } 
             });
         }else if(elem.matches('[data-name="follow"]')){
-            console.log("구독완료");
+            console.log("팔로우!");
             var pk = elem.getAttribute('name');
             
             $.ajax({
@@ -123,9 +123,9 @@
                 success: function(response){
                     console.log("성공");
                     if(response.status){
-                        document.querySelector('input.follow[name=\''+pk+'\']').value="구독완료";
+                        document.querySelector('input.follow[name=\''+pk+'\']').value="팔로잉";
                     }else{
-                        document.querySelector('input.follow[name=\''+pk+'\']').value="구독취소";
+                        document.querySelector('input.follow[name=\''+pk+'\']').value="팔로우";
                     }
                 },
                 error: function(request, status, error){

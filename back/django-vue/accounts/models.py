@@ -17,6 +17,7 @@ def user_path(instance, filename):
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nickname = models.CharField('닉네임', max_length=30, unique=True)
+    number = models.CharField('군번', max_length=11, unique=True)
     follow_set = models.ManyToManyField('self',
                                         blank=True,
                                         through='Follow',

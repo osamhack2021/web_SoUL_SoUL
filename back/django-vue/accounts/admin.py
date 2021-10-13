@@ -8,9 +8,9 @@ class FollowInline(admin.TabularInline):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nickname', 'user']
-    list_display_links = ['nickname', 'user']
-    search_fields = ['nickname']
+    list_display = ['id', 'nickname', 'user', 'number']
+    list_display_links = ['nickname', 'user', 'number']
+    search_fields = ['nickname','number','user', 'number']
     inlines = [FollowInline,]
     
 @admin.register(Follow)

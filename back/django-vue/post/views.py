@@ -1,24 +1,26 @@
 import json
 from django.contrib import messages
-from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth import get_user_model
+from django.core.exceptions import PermissionDenied
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from .forms import PostForm
-# from .forms import CommentForm
-from .models import Post, Like, Tag
-# from .models import Comment
+from django.utils.text import slugify
 from django.db.models import Count
+from .forms import PostForm
+from .models import Post, Like, Tag, Bookmark, Category, Question, Show
+
+
 
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    # comment_form = CommentForm()
     
     return render(request, 'post/post_detail.html', {
-        # 'comment_form': comment_form,
         'post': post,
     })
     
@@ -26,13 +28,11 @@ def post_detail(request, pk):
 def my_post_list(request, username):
     user = get_object_or_404(get_user_model(), username=username)
     user_profile = user.profile
-    
     target_user = get_user_model().objects.filter(id=user.id).select_related('profile') \
         .prefetch_related('profile__follower_user__from_user', 'profile__follow_user__to_user')
-        
     post_list = user.post_set.all()
-    
     all_post_list = Post.objects.all()
+    
     
     return render(request, 'post/my_post_list.html', {
         'user_profile': user_profile,
@@ -43,20 +43,22 @@ def my_post_list(request, username):
     })
 
 
+class PostList(ListView, LoginRequiredMixin):
+    model = Post
+    ordering = '-pk'
+    paginate_by = None
+
+    def get_context_data(self, **kwargs):
+        context = super(PostList, self).get_context_data()
+        context['categories'] = Category.objects.all()
+        context['no_category_post_count'] = Post.objects.filter(category=None).count()
+        return context
+
+
 
 def post_list(request, tag=None):
     tag_all = Tag.objects.annotate(num_post=Count('post')).order_by('-num_post')
     
-    # if tag:
-    #     post_list = Post.objects.filter(tag_set__name__iexact=tag) \
-    #         .prefetch_related('tag_set', 'like_user_set__profile', 'comment_set__author__profile',
-    #                           'author__profile__follower_user', 'author__profile__follower_user__from_user') \
-    #         .select_related('author__profile')
-    # else:
-    #     post_list = Post.objects.all() \
-    #         .prefetch_related('tag_set', 'like_user_set__profile', 'comment_set__author__profile',
-    #                           'author__profile__follower_user', 'author__profile__follower_user__from_user') \
-    #         .select_related('author__profile')
     if tag:
         post_list = Post.objects.filter(tag_set__name__iexact=tag) \
             .prefetch_related('tag_set', 'like_user_set__profile',
@@ -68,9 +70,8 @@ def post_list(request, tag=None):
                               'author__profile__follower_user', 'author__profile__follower_user__from_user') \
             .select_related('author__profile')
 
-    # comment_form = CommentForm()
     
-    paginator = Paginator(post_list, 3)
+    paginator = Paginator(post_list, 4)
     page_num = request.POST.get('page')
     
     try:
@@ -83,7 +84,6 @@ def post_list(request, tag=None):
     if request.is_ajax():
         return render(request, 'post/post_list_ajax.html', {
             'posts': posts,
-            # 'comment_form': comment_form,
         })
     
     if request.method == 'POST':
@@ -103,14 +103,12 @@ def post_list(request, tag=None):
             'tag': tag,
             'posts': posts,
             'follow_post_list': follow_post_list,
-            # 'comment_form': comment_form,
             'tag_all': tag_all,
         })
     else:
         return render(request, 'post/post_list.html', {
             'tag': tag,
             'posts': posts,
-            # 'comment_form': comment_form,
             'tag_all': tag_all,
         })
     
@@ -205,58 +203,122 @@ def post_delete(request, pk):
         # messages.success(request, '삭제완료')
         return redirect('post:post_list')
 
+
+
+
+
+# class sonagi_search(SonagiList):
+#     paginate_by = None
     
-# @login_required
-# def comment_new(request):
-#     pk = request.POST.get('pk')
-#     post = get_object_or_404(Post, pk=pk)
-#     if request.method == 'POST':
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.author = request.user
-#             comment.post = post
-#             comment.save()
-#             return render(request, 'post/comment_new_ajax.html', {
-#                 'comment': comment,   
-#             })
-#     return redirect("post:post_list")
-
-
-# @login_required
-# def comment_new_detail(request):
-#     pk = request.POST.get('pk')
-#     post = get_object_or_404(Post, pk=pk)
-#     if request.method == 'POST':
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.author = request.user
-#             comment.post = post
-#             comment.save()
-#             return render(request, 'post/comment_new_detail_ajax.html', {
-#                 'comment': comment,
-#             })
-
-
-
-@login_required
-def comment_delete(request):
-    pk = request.POST.get('pk')
-    comment = get_object_or_404(Comment, pk=pk)
-    if request.method == 'POST' and request.user == comment.author:
-        comment.delete()
-        message = '삭제완료'
-        status = 1
+#     def get_queryset(self):
+#         q = self.kwargs['q']
+#         post_list = Post.objects.filter(
+#             Q(title__contains=q) | Q(tags__name__contains=q)
+#         ).distinct()
+#         return post_list
     
-    else:
-        message = '잘못된 접근입니다'
-        status = 0
-        
-    return HttpResponse(json.dumps({'message': message, 'status': status, }), content_type="application/json")
-
-
-
+#     def get_sonagi_data(self, **kwargs):
+#         context = super(sonagi_search, self).get_context_data()
+#         q = self.kwargs['q']
+#         context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
+#         return context
+    
+# class my_sonagi_search(MySonagiList):
+#     paginate_by = None
+    
+#     def get_queryset(self):
+#         q = self.kwargs['q']
+#         post_list = Post.objects.filter(
+#             Q(title__contains=q) | Q(tags__name__contains=q)
+#         ).distinct()
+#         return post_list
+    
+#     def get_my_sonagi_data(self, **kwargs):
+#         context = super(my_sonagi_search, self).get_context_data()
+#         q = self.kwargs['q']
+#         context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
+#         return context
+    
+# class footprint_search(FootprintList):
+#     paginate_by = None
+    
+#     def get_queryset(self):
+#         q = self.kwargs['q']
+#         post_list = Post.objects.filter(
+#             Q(title__contains=q) | Q(tags__name__contains=q)
+#         ).distinct()
+#         return post_list
+    
+#     def get_footprint_data(self, **kwargs):
+#         context = super(footprint_search, self).get_context_data()
+#         q = self.kwargs['q']
+#         context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
+#         return context
+    
+# class my_footprint_search(MyFootprintList):
+#     paginate_by = None
+    
+#     def get_queryset(self):
+#         q = self.kwargs['q']
+#         post_list = Post.objects.filter(
+#             Q(title__contains=q) | Q(tags__name__contains=q)
+#         ).distinct()
+#         return post_list
+    
+#     def get_my_footprint_data(self, **kwargs):
+#         context = super(my_footprint_search, self).get_context_data()
+#         q = self.kwargs['q']
+#         context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
+#         return context
+    
+# class book_search(BookList):
+#     paginate_by = None
+    
+#     def get_queryset(self):
+#         q = self.kwargs['q']
+#         post_list = Post.objects.filter(
+#             Q(title__contains=q) | Q(tags__name__contains=q)
+#         ).distinct()
+#         return post_list
+    
+#     def get_book_data(self, **kwargs):
+#         context = super(book_search, self).get_context_data()
+#         q = self.kwargs['q']
+#         context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
+#         return context
+    
+# class my_book_search(MyBookList):
+#     paginate_by = None
+    
+#     def get_queryset(self):
+#         q = self.kwargs['q']
+#         post_list = Post.objects.filter(
+#             Q(title__contains=q) | Q(tags__name__contains=q)
+#         ).distinct()
+#         return post_list
+    
+#     def get_my_book_data(self, **kwargs):
+#         context = super(my_book_search, self).get_context_data()
+#         q = self.kwargs['q']
+#         context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
+#         return context
+    
+# class my_munhak_search(MyMunhakList):
+#     paginate_by = None
+    
+#     def get_queryset(self):
+#         q = self.kwargs['q']
+#         post_list = Post.objects.filter(
+#             Q(title__contains=q) | Q(tags__name__contains=q)
+#         ).distinct()
+#         return post_list
+    
+#     def get_my_book_data(self, **kwargs):
+#         context = super(my_munhak_search, self).get_context_data()
+#         q = self.kwargs['q']
+#         context['search_info'] = f'Search: {q} ({self.get_queryset().count()})'
+#         return context
+    
 
 
 

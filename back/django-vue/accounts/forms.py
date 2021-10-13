@@ -17,8 +17,8 @@ class SignupForm(UserCreationForm):
     }))
     
     nickname = forms.CharField(label='닉네임')
-    number = forms.CharField(label='군번')
     picture = forms.ImageField(label='프로필 사진', required=False)
+    number = forms.CharField(label='군번')
     
     class Meta(UserCreationForm.Meta):
         fields = UserCreationForm.Meta.fields + ('email',)
@@ -35,6 +35,12 @@ class SignupForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError('이미 사용중인 이메일 입니다.')
         return email
+    
+    def clean_number(self):
+        number = self.cleaned_data.get('number')
+        if Profile.objects.filter(number=number).exists():
+            raise forms.ValidationError('이미 사용중인 군번입니다.')
+        return number
 
     def clean_picture(self):
         picture = self.cleaned_data.get('picture')
@@ -47,6 +53,7 @@ class SignupForm(UserCreationForm):
         Profile.objects.create(
             user=user,
             nickname=self.cleaned_data['nickname'],
+            number=self.cleaned_data['number'],
             picture=self.cleaned_data['picture'],
         )
         return user

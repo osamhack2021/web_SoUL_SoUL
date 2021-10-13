@@ -5,23 +5,61 @@ from imagekit.processors import ResizeToFill
 import re
 
 
-def photo_path(instance, filename):
-    from time import gmtime, strftime
-    from random import choice
-    import string
-    arr = [choice(string.ascii_letters) for _ in range(8)]
-    pid = ''.join(arr)
-    extension = filename.split('.')[-1]
-    return '{}/{}/{}.{}'.format(strftime('post/%Y/%m/%d/'), instance.author.username, pid, extension)
 
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=100, unique=True, allow_unicode=True)
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name_plural = 'Categories'
+        
+        
+class Question(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    content = models.CharField(max_length = 100, unique=True)
+    slug = models.SlugField(max_length=100, unique=True, allow_unicode=True)
+    
+    def __str__(self):
+        return self.name
+    
+    
+class MunhakType(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=100, unique=True, allow_unicode=True)
+    
+    def __str__(self):
+        return self.name
+    
+    
+class Show(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=100, unique=True, allow_unicode=True)
+    
+    def __str__(self):
+        return self.name
+    
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    photo = ProcessedImageField(upload_to=photo_path,
-                                processors=[ResizeToFill(600, 600)],
-                                format='JPEG',
-                                options={'quality': 90})
-    content = models.CharField(max_length=2000, help_text="최대 2000자 입력 가능")
+    title = models.CharField(max_length=20)
+    intro = models.CharField(max_length=300, help_text="최대 300자 입력 가능")
+    content = models.CharField(max_length=3000, help_text="최대 3000자 입력 가능")
+    category = models.ForeignKey(Category,
+                                 null=True,
+                                 on_delete=models.PROTECT)
+    question = models.ForeignKey(Question,
+                                 null=True,
+                                 blank=True,
+                                 on_delete=models.PROTECT)
+    munhak_type = models.ForeignKey(MunhakType,
+                                 null=True,
+                                 on_delete=models.PROTECT)
+    show = models.ForeignKey(Show,
+                             null=True,
+                             on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     tag_set = models.ManyToManyField('Tag', blank=True)
@@ -33,8 +71,6 @@ class Post(models.Model):
                                            blank=True,
                                            related_name='bookmark_user_set',
                                            through='Bookmark')  # post.like_set 으로 접근 가능
-    
-
 
     class Meta:
         ordering = ['-created_at']
@@ -53,22 +89,21 @@ class Post(models.Model):
     @property
     def like_count(self):
         return self.like_user_set.count()
-    
     @property
     def bookmark_count(self):
         return self.bookmark_user_set.count()
 
     def __str__(self):
         return self.content
-
+    
+    
 
 class Tag(models.Model):
     name = models.CharField(max_length=140, unique=True)
 
     def __str__(self):
         return self.name
-
-
+    
 class Like(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -79,7 +114,7 @@ class Like(models.Model):
         unique_together = (
             ('user', 'post')
         )
-        
+
 class Bookmark(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -93,15 +128,6 @@ class Bookmark(models.Model):
         
 
 
-# class Comment(models.Model):
-#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-#     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#     content = models.CharField(max_length=40)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
 
-#     class Meta:
-#         ordering = ['-id']
 
-#     def __str__(self):
-#         return self.content
+
