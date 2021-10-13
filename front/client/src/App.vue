@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<router-view name="header"></router-view>
-		<router-view></router-view>
+		<router-view class="maincontent"></router-view>
 		<router-view name="footer"></router-view>
 	</div>
 </template>
@@ -18,8 +18,11 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	html {
 		font-size: 16px;
+	}
+	.maincontent {
+		min-height: 700px;
 	}
 </style>

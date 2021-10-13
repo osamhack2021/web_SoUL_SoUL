@@ -3,7 +3,7 @@
 		<div id="inner">
 			<img id="logo" src="../assets/logo1.png" alt="logo">
 			<router-link to="/login" id="login-button">로그인</router-link>
-			<section class="tmp">추천 컨텐츠 글</section>
+			<!-- <section class="tmp">추천 컨텐츠 글</section> -->
 		</div>
 	</div>
 </template>
@@ -23,14 +23,13 @@
 	}
 	#main-container #inner {
 		display: flex;
-		width: 1200px;
-		/* height: 2000px; */
-		justify-content: flex-start;
+		position: absolute;
 		flex-direction: column;
 		align-items: center;
-		padding: 110px;
-		margin: 0 auto;
-		/* border: 1px solid; */
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-70%);
+		justify-items: center;
 	}
 	#inner #logo {
 		width: 380px;

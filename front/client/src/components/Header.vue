@@ -139,7 +139,7 @@
 		left: 0;
 		top: 0;
 		z-index: 999;
-		/* border-bottom: 1px solid; */
+		background-color: white;
 	}
 	#header .inner {
 		width: 42.1875rem;
