@@ -12,7 +12,6 @@
 					<button @click="selected = [0, 0, 0, 0]" class="btn" type="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false"></button>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="writecontent">
 						<router-link class="dropdown-item" to="/writesonagi">소나기</router-link>
-						<!-- <router-link class="dropdown-item" to="/writefootprint">발자국</router-link> -->
 						<router-link class="dropdown-item" to="/writeques">발자국</router-link>
 						<router-link class="dropdown-item" to="/writebook">독후감</router-link>
 						<router-link class="dropdown-item" to="/writemunhak">문학</router-link>
@@ -140,7 +139,7 @@
 		left: 0;
 		top: 0;
 		z-index: 999;
-		/* border-bottom: 1px solid; */
+		background-color: white;
 	}
 	#header .inner {
 		width: 42.1875rem;

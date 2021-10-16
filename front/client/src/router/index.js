@@ -43,7 +43,8 @@ const routes = [
 		path: '/',
 		components: {
 			default: Main, 
-			header: Header
+			header: Header,
+			footer: Footer
 		},
 		children: [
 			{ path: 'sonagi', name: 'Mysonagi', component: Mainsonagi},
@@ -58,7 +59,8 @@ const routes = [
 		name: 'Mypage', 
 		components: {
 			default: Mypage,
-			header: Header
+			header: Header,
+			footer: Footer
 		},
 		children: [
 			{ path: 'sonagi', component: Mysonagi },
@@ -72,7 +74,8 @@ const routes = [
 		name: 'EditProfile',
 		components: {
 			default: EditProfile,
-			header: Header
+			header: Header,
+			footer: Footer
 		}
 	},
 	{
@@ -80,6 +83,13 @@ const routes = [
 		name: 'WriteSonagi',
 		components: {
 			default: WriteSonagi, 
+			header: Header,
+		}
+	},
+	{
+		path: '/writeques',
+		components: {
+			default: WriteQues,
 			header: Header
 		}
 	},
@@ -103,7 +113,7 @@ const routes = [
 		name: 'WriteBook',
 		components: {
 			default: WriteBook,
-			header: Header
+			header: Header,
 		}
 	},
 	{
@@ -111,7 +121,7 @@ const routes = [
 		name: 'WriteMunhak',
 		components: {
 			default: WriteMunhak,
-			header: Header
+			header: Header,
 		}
 	},
 	{
@@ -119,7 +129,8 @@ const routes = [
 		name: 'PostSonagi',
 		components: {
 			default: PostSonagi,
-			header: Header
+			header: Header,
+			footer: Footer
 		}
 	},
 	{
@@ -127,7 +138,8 @@ const routes = [
 		name: 'PostFootprint',
 		components: {
 			default: PostFootprint,
-			header: Header
+			header: Header,
+			footer: Footer
 		}
 	},
 	{
@@ -135,7 +147,8 @@ const routes = [
 		name: 'PostBook',
 		components: {
 			default: PostBook,
-			header: Header
+			header: Header,
+			footer: Footer
 		}
 	},
 	{
@@ -143,7 +156,8 @@ const routes = [
 		name: 'PostMunhak',
 		components: {
 			default: PostMunhak,
-			header: Header
+			header: Header,
+			footer: Footer
 		}
 	},
 ]

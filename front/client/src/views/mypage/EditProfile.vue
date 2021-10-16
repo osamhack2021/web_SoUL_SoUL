@@ -36,7 +36,7 @@
 				usernum: '20-76060000'
 			};
 		},
-		created() {
+		mounted() {
 			this.getNickname();
 		},
 		methods: {
@@ -53,7 +53,7 @@
 		display: flex;
 		position: relative;
 		top: 150px;
-		width: 42.5rem; 
+		/* width: 42.5rem;  */
 		margin: 0 auto;
 	}
 	#in-box .profileImg{ width: 8.75rem; height: 8.75rem; margin-right: 10px;}

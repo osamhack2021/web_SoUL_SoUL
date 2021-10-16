@@ -30,14 +30,14 @@
 				textValue: "",
 				Question: ""
 			};
-		},
-		created() {
-			this.getQuestion();
-		},
+		}, 
 		methods: {
-			getQuestion() {
+			getQuestion(){
 				this.Question = this.$store.getters.getQuestion;
 			}
+		},
+		mounted() {
+			this.getQuestion();
 		}
 		// computed: {
 		// 	user() {

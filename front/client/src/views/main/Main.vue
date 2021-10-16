@@ -42,19 +42,19 @@
 </script>
 
 <style scoped>
-	#main-inner #sidebar-box .iconsize {
-		width: 45px;
-		height: 45px;
-	}
-	a:active {
-		opacity: 0.5;
-	}
 	#main-inner {
 		position: relative;
 		display: flex;
 		top: 8rem;
 		width: 900px;
 		margin: 0 auto;
+	}
+	#main-inner #sidebar-box .iconsize {
+		width: 45px;
+		height: 45px;
+	}
+	a:active {
+		opacity: 0.5;
 	}
 	#main-inner #sidebar-box {
 		position: fixed;
@@ -78,7 +78,6 @@
 	}
 	#main-inner #contents-box {
 		width: 43.75rem;
-		height: 1700px;
 		margin: 0 auto;
 		justify-content: center;
 		align-items: center;
