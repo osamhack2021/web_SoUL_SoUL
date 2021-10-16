@@ -9,6 +9,7 @@ export default createStore({
 				nickname: "Hampeyong",
 			},
 			islogin: 0,
+			mainBtn: [1, 0, 0, 0],
 			mypageBtn: 1,
 			questions: [
 					"0",
@@ -28,6 +29,9 @@ export default createStore({
 		getInitial(state) {
 			return state._user.nickname[0];
 		},
+		getMainbtn(state) {
+			return state.mainBtn;
+		},
 		getNickname(state) {
 			return state._user.nickname;
 		}, 
@@ -39,6 +43,9 @@ export default createStore({
 		}
 	},
 	mutations: {
+		storeMainbtn(state, btn) {
+			state.mainBtn = btn;
+		},
 		selectedMyBtn(state, btn) {
 			state.mypageBtn = btn;
 		},

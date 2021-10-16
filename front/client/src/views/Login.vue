@@ -30,18 +30,6 @@
 			}
 		},
 		methods : {
-			// login : function () {
-			// 	if (this.user.id == '') {alert('아이디를 입력해주세요.');return;}
-			// 	if (this.user.pw == '') {alert('비밀번호를 입력해주세요.');return;}
-			// 	this.$http.post('/api/login', {user:this.user}).then((response) => {
-			// 		if (response.data.success == true) {
-			// 			alert(response.data.message);
-			// 			this.$router.push('sonagi'); //로그인 성공시 list 페이지로 이동
-			// 		} else {
-			// 			alert(response.data.message);
-			// 		}
-			// 	});
-			// },
 			login: function() {
 				let _user = this.$store.getters.getUser;
 				// console.log(_user.id);
@@ -53,7 +41,7 @@
 				if (this.user.id == _user.id && this.user.pw == _user.pw) {
 					this.$store.commit('dologin');
 					console.log(this.$store.state.islogin);
-					this.$router.push('sonagi');
+					this.$router.push('/sonagi');
 				} else {
 					alert("아이디 또는 비밀번호가 일치하지 않습니다.");
 				}

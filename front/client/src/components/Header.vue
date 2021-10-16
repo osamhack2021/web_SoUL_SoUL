@@ -46,7 +46,7 @@
 			toHome() {
 				let islogin = this.$store.state.islogin;
 				if(islogin) {console.log("login O"); this.$router.replace('/sonagi'); this.selected = [1, 0, 0, 0];}
-				else {console.log("login X"); this.$router.replace('home');}
+				else {console.log("login X"); this.$router.replace('/home');}
 			},
 			getInitial() {
 				this.userinitial = this.$store.getters.getInitial;
