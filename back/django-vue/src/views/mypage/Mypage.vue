@@ -3,7 +3,7 @@
 		<section id="profile-box">
 			<img class="iconsize" src="../../assets/profile-tmp.png" />
 			<div id="profile-information">
-				<p class="name">{{ username }}</p>
+				<p class="name">{{ nickname }}</p>
 				<p class="intro">{{ userintro }}</p>
 			</div>
 			<div id="button-edit" class="button-default"><router-link class="fontCenter" to="/editprofile" style="font-size: 14px; line-height: 26px">프로필 수정</router-link></div>
@@ -31,7 +31,6 @@
 			return {
 				nickname: "",
 				userintro: "Nice to meet you!",
-				// btn: 1
 			};
 		},
 		computed: {
@@ -39,7 +38,7 @@
 				return this.$store.state.mypageBtn;
 			}
 		},
-		created() {
+		mounted() {
 			this.getNickname();
 		},
 		methods: {

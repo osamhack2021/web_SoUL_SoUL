@@ -13,9 +13,12 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     
     path('post/', include('post.urls', namespace='post')),
-    path('', lambda r: redirect('post:post_list'), name='root'),
+    # path('', lambda r: redirect('post:post_list'), name='root'),
+    # path('', lambda r: redirect('post/'), name='root'),
     
-    # path('', views.HomeView.as_view(), name='home'),
+    path('', views.HomeView.as_view(), name='home'),
+    path('postapi/', include('post.urls', namespace='post_api')),
+    path('accountsapi/', include('accounts.urls', namespace='accounts_api')),
     
 ]
 

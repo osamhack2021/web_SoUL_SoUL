@@ -9,7 +9,20 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
+from rest_framework import viewsets # vieset import
+from .serializers import ProfileSerializer, FollowSerializer # 생성한 serializer import
+from .models import Profile, Follow # 선언한 모델 import
+from .models import user_path
 
+
+
+class ProfileViewSet(viewsets.ModelViewSet): # ModelViewSet 활용
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    
+class FollowViewSet(viewsets.ModelViewSet):
+    queryset = Follow.objects.all()
+    serializer_class = FollowSerializer
 
 def signup(request):
     if request.method == 'POST':

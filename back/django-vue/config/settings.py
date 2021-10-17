@@ -27,12 +27,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    
+    'webpack_loader',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'markdownx',
+    'crispy_forms',
+    'rest_framework',
+    
     'accounts',
     'post',
-    'webpack_loader',
     'api',
+       
 ]
 
 MIDDLEWARE = [
@@ -51,8 +59,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'config', 'templates'),
-            # os.path.join(BASE_DIR, 'public'),
+            # os.path.join(BASE_DIR, 'config', 'templates'),
+            os.path.join(BASE_DIR, 'public'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -118,8 +126,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'config', 'static'),
-    # os.path.join(BASE_DIR, 'src', 'assets'),
+    # os.path.join(BASE_DIR, 'config', 'static'),
+    os.path.join(BASE_DIR, 'src', 'assets'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -130,6 +138,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+)
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 WEBPACK_LOADER = {
     'DEFAULT': {

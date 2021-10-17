@@ -5,14 +5,14 @@
 			<button @click="toHome" id="logo"><img src="../assets/logo2.png" alt=""></button>
 			<div id="right-icon">
 				<router-link to="/sonagi"><img @click="selected = [1, 0, 0, 0]" :src="imgsrc[0][selected[0]]" alt="home" class="iconsize iconbox"></router-link>
-				<a href="#"><img @click="selected = [0, 1, 0, 0]" :src="imgsrc[1][selected[1]]" alt="follower" class="iconsize iconbox"></a>
-				<a href="#"><img @click="selected = [0, 0, 1, 0]" :src="imgsrc[2][selected[2]]" alt="bookmark" class="iconsize iconbox"></a>
-				<router-link @click="selected = [0, 0, 0, 0]" to="/mypage/sonagi" id="profileIcon" class="iconbox">{{ userinitial }}</router-link>
+				<router-link to="/blank"><img @click="selected = [0, 1, 0, 0]" :src="imgsrc[1][selected[1]]" alt="follower" class="iconsize iconbox"></router-link>
+				<router-link to="/blank"><img @click="selected = [0, 0, 1, 0]" :src="imgsrc[2][selected[2]]" alt="bookmark" class="iconsize iconbox"></router-link>
+				<router-link to="/mypage/sonagi" id="profileIcon" class="iconbox"><span @click="selected = [0, 0, 0, 0]">{{ userinitial }}</span></router-link>
 				<div class="dropdown">
 					<button @click="selected = [0, 0, 0, 0]" class="btn" type="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false"></button>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="writecontent">
 						<router-link class="dropdown-item" to="/writesonagi">소나기</router-link>
-						<router-link class="dropdown-item" to="/writefootprint">발자국</router-link>
+						<router-link class="dropdown-item" to="/writeques">발자국</router-link>
 						<router-link class="dropdown-item" to="/writebook">독후감</router-link>
 						<router-link class="dropdown-item" to="/writemunhak">문학</router-link>
 						</ul>
@@ -46,7 +46,7 @@
 			toHome() {
 				let islogin = this.$store.state.islogin;
 				if(islogin) {console.log("login O"); this.$router.replace('/sonagi'); this.selected = [1, 0, 0, 0];}
-				else {console.log("login X"); this.$router.replace('home');}
+				else {console.log("login X"); this.$router.replace('/home');}
 			},
 			getInitial() {
 				this.userinitial = this.$store.getters.getInitial;
@@ -135,11 +135,12 @@
 <style scope>
 	#header {
 		position: fixed;
+		max-width: 1903px;
 		width: 100%;
 		left: 0;
 		top: 0;
 		z-index: 999;
-		/* border-bottom: 1px solid; */
+		background-color: white;
 	}
 	#header .inner {
 		width: 42.1875rem;
@@ -150,7 +151,8 @@
 		align-items: center;
 	}
 	#header .inner a:active {	opacity: 0.7;}
-	#header .inner #logo{	border: none; background: none;}
+	#header .inner #logo{	border: none; background: none; outline: none;}
+	#header .inner #logo :active{outline: none;}
 	#header .inner #logo img{ width: 9.375rem;}
 	/* #header .inner button{ outline: none;} */
 	#header #right-icon {

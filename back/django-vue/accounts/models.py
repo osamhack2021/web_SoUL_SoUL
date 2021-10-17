@@ -65,8 +65,8 @@ class Profile(models.Model):
     def is_following(self, user):
         return user in self.get_following
     
-   
 
+    
 class Follow(models.Model):
     from_user = models.ForeignKey(Profile,
                                  related_name='follow_user',

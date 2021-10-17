@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from .models import Post, Like, Bookmark, Tag, Category, Question, MunhakType, Show
+from .models import Post, Like, Bookmark, Category, Question, MunhakType
 
 
 class PostForm(forms.ModelForm):
@@ -15,25 +15,13 @@ class LikeInline(admin.TabularInline):
         
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id', 'author', 'nickname', 'title', 'intro', 'content', 'category', 'question', 'munhak_type', 'show', 'created_at', 'updated_at']
-    list_display_links = ['author', 'nickname', 'title', 'content', 'category', 'show']
+    list_display = ['id', 'author', 'nickname', 'title', 'intro', 'content', 'category', 'question', 'munhak_type', 'is_no_public']
+    list_display_links = ['author', 'nickname', 'title', 'content', 'category', 'is_no_public']
     form = PostForm
     inlines = [LikeInline]
     
     def nickname(request, post):
         return post.author.profile.nickname
-    
-class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',)}
-admin.site.register(Category,CategoryAdmin)
-
-class QuestionAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',)}
-admin.site.register(Question,QuestionAdmin)
-
-class ShowAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',)}
-admin.site.register(Show,ShowAdmin)
 
 @admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
@@ -44,10 +32,25 @@ class LikeAdmin(admin.ModelAdmin):
 class BookmarkAdmin(admin.ModelAdmin):
     list_display = ['id', 'post', 'user', 'created_at']
     list_display_links = ['post', 'user']
+    
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
 
-@admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
-    list_display = ['name']
+class QuestionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+# class TagAdmin(admin.ModelAdmin):
+#     prepopulated_fields = {'slug': ('name',)}
+    
+class MunhakTypeAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+    
+
+    
+admin.site.register(Category,CategoryAdmin)    
+admin.site.register(Question,QuestionAdmin)
+# admin.site.register(Tag, TagAdmin)
+admin.site.register(MunhakType, MunhakTypeAdmin)
     
     
     

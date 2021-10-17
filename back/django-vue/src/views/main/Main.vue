@@ -6,10 +6,6 @@
 				<router-link to="/questions"><img class="iconsize" @click="selected = [0, 1, 0, 0]" :src="imgsrc[1][selected[1]]" alt="footprint" /></router-link>
 				<router-link to="/book"><img class="iconsize" @click="selected = [0, 0, 1, 0]" :src="imgsrc[2][selected[2]]" alt="book"/></router-link>
 				<router-link to="/munhak"><img class="iconsize" @click="selected = [0, 0, 0, 1]" :src="imgsrc[3][selected[3]]" alt="munhak"/></router-link>
-				<!-- <router-link to="/postsonagi">소나기</router-link>
-				<router-link to="/postfootprint">발자국</router-link>
-				<router-link to="/postbook">독후감</router-link>
-				<router-link to="/postmunhak">문학</router-link> -->
 			</div>
 			<div id="contents-box">
 				<router-view></router-view>
@@ -22,8 +18,7 @@
 	export default {
 		data() {
 			return {
-				selected : [1, 0, 0, 0],
-				on: 1,
+				selected : [],
 				imgsrc : [
 				[require("../../assets/rain1.png"), require("../../assets/rain2.png")],
 					[require("../../assets/footprint1.png"), require("../../assets/footprint2.png")],
@@ -31,30 +26,38 @@
 						[require("../../assets/munhak1.png"), require("../../assets/munhak2.png")]
 				]
 			};
+		},
+		methods: {
+			getMainbtn() {
+				this.selected = this.$store.getters.getMainbtn;
+			},
+			storeMainbtn() {
+				this.$store.commit('storeMainbtn', this.selected);
+			}
+		},
+		created() {
+			this.getMainbtn();
 		}, 
-		// components: {Header },
-		// computed: {
-		// 	user() {
-		// 		return this.$store.state.user;
-		// 	}
-		// }
+		beforeUnmount() {
+			this.storeMainbtn();
+		}
 	}
 </script>
 
 <style scoped>
-	#main-inner #sidebar-box .iconsize {
-		width: 45px;
-		height: 45px;
-	}
-	a:active {
-		opacity: 0.5;
-	}
 	#main-inner {
 		position: relative;
 		display: flex;
 		top: 8rem;
 		width: 900px;
 		margin: 0 auto;
+	}
+	#main-inner #sidebar-box .iconsize {
+		width: 45px;
+		height: 45px;
+	}
+	a:active {
+		opacity: 0.5;
 	}
 	#main-inner #sidebar-box {
 		position: fixed;
@@ -78,7 +81,6 @@
 	}
 	#main-inner #contents-box {
 		width: 43.75rem;
-		height: 1700px;
 		margin: 0 auto;
 		justify-content: center;
 		align-items: center;
