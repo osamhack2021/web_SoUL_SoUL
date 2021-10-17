@@ -58,7 +58,8 @@ const routes = [
 			{ path: 'questions', name: 'Questions', component: () => import(/* webpackChunkName: "main" */ '../views/main/Questions.vue')},
 			{ path: 'footprint', name: 'Myfootprint', component: () => import(/* webpackChunkName: "main" */ '../views/main/Mainfootprint.vue')},
 			{ path: 'book', name: 'Mybook', component: () => import(/* webpackChunkName: "main" */ '../views/main/Mainbook.vue')},
-			{ path: 'munhak', name: 'Mymunhak', component: () => import(/* webpackChunkName: "main" */ '../views/main/Mainmunhak.vue')}
+			{ path: 'munhak', name: 'Mymunhak', component: () => import(/* webpackChunkName: "main" */ '../views/main/Mainmunhak.vue')},
+			{ path: 'blank', name: 'Blank', component: () => import('../views/Blank.vue')}
 		],
 	},
 	{

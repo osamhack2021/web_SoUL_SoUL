@@ -58,13 +58,13 @@
 	}
 	#in-box .profileImg{ width: 8.75rem; height: 8.75rem; margin-right: 10px;}
 	#in-box #profile-information {
-		display: grid;
 		text-align: end;
+		display: inline-block;
 	}
 	#profile-information input, textarea {
 		width: 300px;
 		margin: 4px 0 4px 16px;
-		border: 1px solid #C4C4C4;
+		border: 2px solid #C4C4C4;
 		border-radius: 2px;
 	}
 	#profile-information #intro{
