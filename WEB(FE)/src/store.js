@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 export default createStore({
 	state() {
 		return{
+			LoadingStatus: false,
 			_user: {
 				id: 'admin',
 				pw: 1234,
@@ -43,6 +44,12 @@ export default createStore({
 		}
 	},
 	mutations: {
+		startSpinner(state){
+			state.LoadingStatus = true;
+		},
+		endSpinner(state){
+			state.LoadingStatus = false;
+		},
 		storeMainbtn(state, btn) {
 			state.mainBtn = btn;
 		},

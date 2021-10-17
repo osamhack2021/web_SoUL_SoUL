@@ -135,7 +135,7 @@
 <style scope>
 	#header {
 		position: fixed;
-		width: 100%;
+		width: 1903px;
 		left: 0;
 		top: 0;
 		z-index: 999;
