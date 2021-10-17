@@ -1,10 +1,10 @@
 <template>
 	<div id="mainouter">
-		<button @click="openpost()">
+		<button @click="openpost()" :key="i" v-for="(content, i) in contentList">
 			<section id="content-box">
-				<div id="in-header"><span class="title">{{ bookTitle }}</span><span class="username">{{ bookAuthor }}</span></div>
-				<p>{{ introText }}</p>
-				<div class="date-box">{{ contentDate }}</div>
+				<div id="in-header"><span class="title">{{ content.bookTitle }}</span><span class="username">{{ content.bookAuthor }}</span></div>
+				<p>{{ content.introText }}</p>
+				<div class="date-box">{{ content.contentDate }}</div>
 			</section>
 		</button>
 	</div>
@@ -15,11 +15,14 @@
 	export default {
 		data() {
 			return {
-				bookTitle: "노인과 바다", 
-				bookAuthor: "허밍웨이",
-				introText: "설레는 그들을 충분히 것은 희망의 보라. 부패를 얼마나 천자만홍이 대중을 그들은 이것이야말로 뛰노는 그리하였는가? 갑 할지니, 밝은 이상의 시들어 칼이다. 고행을 되려니와, 것은 가치를 부패를 방황하였으며, 되는 그리하였는가? ",
-				contentDate: "2021.10.05"
-			};
+				contentList: [
+					{bookTitle: "노인과 바다", bookAuthor: "허밍웨이", introText: "설레는 그들을 충분히 것은 희망의 보라. 부패를 얼마나 천자만홍이 대중을 그들은 이것이야말로 뛰노는 그리하였는가? 갑 할지니, 밝은 이상의 시들어 칼이다. 고행을 되려니와, 것은 가치를 부패를 방황하였으며, 되는 그리하였는가? ",
+					contentDate: "2021.10.05"},
+					{bookTitle: "노인과 바다", bookAuthor: "허밍웨이", introText: "설레는 그들을 충분히 것은 희망의 보라. 부패를 얼마나 천자만홍이 대중을 그들은 이것이야말로 뛰노는 그리하였는가? 갑 할지니, 밝은 이상의 시들어 칼이다. 고행을 되려니와, 것은 가치를 부패를 방황하였으며, 되는 그리하였는가? ",
+					contentDate: "2021.10.05"},
+					{bookTitle: "노인과 바다", bookAuthor: "허밍웨이", introText: "설레는 그들을 충분히 것은 희망의 보라. 부패를 얼마나 천자만홍이 대중을 그들은 이것이야말로 뛰노는 그리하였는가? 갑 할지니, 밝은 이상의 시들어 칼이다. 고행을 되려니와, 것은 가치를 부패를 방황하였으며, 되는 그리하였는가? ",
+					contentDate: "2021.10.05"},
+				]};
 		}, 
 		methods: {
 			openpost() {
@@ -31,7 +34,7 @@
 
 <style scoped>
 	#content-box {
-		margin: 0 auto 26px;
+		/* margin: 0 auto 26px; */
 		padding: 0 1rem;
 		width: 42.5rem;
 		background: rgba(196,196,196,0.2);
