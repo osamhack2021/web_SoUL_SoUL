@@ -15,8 +15,8 @@ from .forms import PostForm
 from .models import Post, Like, Bookmark, Category, Question
 
 from rest_framework import viewsets # vieset import
-from .serializers import CategorySerializer, QuestionSerializer, MunhakTypeSerializer, PostSerializer, LikeSerializer, BookmarkSerializer # 생성한 serializer import
-from .models import Category, Question, MunhakType, Post, Like, Bookmark # 선언한 모델 import
+from .serializers import CategorySerializer, QuestionSerializer, PostSerializer, LikeSerializer, BookmarkSerializer # 생성한 serializer import
+from .models import Category, Question, Post, Like, Bookmark # 선언한 모델 import
 
 
 
@@ -27,10 +27,6 @@ class CategoryViewSet(viewsets.ModelViewSet): # ModelViewSet 활용
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
-    
-class MunhakTypeViewSet(viewsets.ModelViewSet):
-    queryset = MunhakType.objects.all()
-    serializer_class = MunhakTypeSerializer
     
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
@@ -79,7 +75,7 @@ class PostDetail(DetailView):
     
 class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Post
-    fields = ['title', 'intro', 'content', 'munhak_type', 'question', 'is_no_public']
+    fields = ['title', 'intro', 'content', 'question', 'is_no_public']
 
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
@@ -152,7 +148,7 @@ class BookCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             
 class MunhakCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Post
-    fields = ['title', 'content', 'munhak_type', 'is_no_public']
+    fields = ['title', 'content', 'is_no_public']
 
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
@@ -174,7 +170,7 @@ class MunhakCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ['title', 'intro', 'content', 'munhak_type', 'is_no_public']
+    fields = ['title', 'intro', 'content', 'is_no_public']
 
     template_name = 'post/post_update_form.html'
 
@@ -258,7 +254,7 @@ class BookUpdate(LoginRequiredMixin, UpdateView):
     
 class MunhakUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ['title', 'content', 'munhak_type', 'is_no_public']
+    fields = ['title', 'content', 'is_no_public']
 
     template_name = 'post/munhak_update_form.html'
 
@@ -419,6 +415,7 @@ def post_bookmark(request):
 
     return HttpResponse(json.dumps(context), content_type="application/json") 
 
+
 @login_required
 @require_POST
 def post_like(request):
@@ -518,68 +515,48 @@ def my_post_list(request, username):
 def my_sonagi_list(request, username):
     user = get_object_or_404(get_user_model(), username=username)
     user_profile = user.profile
-    target_user = get_user_model().objects.filter(id=user.id).select_related('profile') \
-        .prefetch_related('profile__follower_user__from_user', 'profile__follow_user__to_user')
+
     my_sonagi_list = user.post_set.filter(category='Sonagi')
     all_post_list = Post.objects.all()
     
     return render(request, 'post/my_sonagi_list.html', {
-        'user_profile': user_profile,
-        'target_user': target_user,
         'my_sonagi_list': my_sonagi_list,
-        'all_post_list': all_post_list,
-        'username': username,
     })
 
 @login_required
 def my_footprint_list(request, username):
     user = get_object_or_404(get_user_model(), username=username)
     user_profile = user.profile
-    target_user = get_user_model().objects.filter(id=user.id).select_related('profile') \
-        .prefetch_related('profile__follower_user__from_user', 'profile__follow_user__to_user')
+
     my_footprint_list = user.post_set.filter(category='Footprint')
     all_post_list = Post.objects.all()
     
     return render(request, 'post/my_sonagi_list.html', {
-        'user_profile': user_profile,
-        'target_user': target_user,
         'my_footprint_list': my_footprint_list,
-        'all_post_list': all_post_list,
-        'username': username,
     })
 
 @login_required
 def my_book_list(request, username):
     user = get_object_or_404(get_user_model(), username=username)
     user_profile = user.profile
-    target_user = get_user_model().objects.filter(id=user.id).select_related('profile') \
-        .prefetch_related('profile__follower_user__from_user', 'profile__follow_user__to_user')
+
     my_book_list = user.post_set.filter(category='Book')
     all_post_list = Post.objects.all()
     
     return render(request, 'post/my_sonagi_list.html', {
-        'user_profile': user_profile,
-        'target_user': target_user,
         'my_book_list': my_book_list,
-        'all_post_list': all_post_list,
-        'username': username,
     })
 
 @login_required
 def my_munhak_list(request, username):
     user = get_object_or_404(get_user_model(), username=username)
     user_profile = user.profile
-    target_user = get_user_model().objects.filter(id=user.id).select_related('profile') \
-        .prefetch_related('profile__follower_user__from_user', 'profile__follow_user__to_user')
+
     my_book_list = user.post_set.filter(category='Munhak')
     all_post_list = Post.objects.all()
     
     return render(request, 'post/my_sonagi_list.html', {
-        'user_profile': user_profile,
-        'target_user': target_user,
         'my_munhak_list': my_munhak_list,
-        'all_post_list': all_post_list,
-        'username': username,
     })
 
     

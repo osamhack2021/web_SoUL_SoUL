@@ -1,0 +1,161 @@
+{
+  "status": "done",
+  "assets": {
+    "img/book1.791f92d3.png": {
+      "name": "img/book1.791f92d3.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/book1.791f92d3.png",
+      "publicPath": "http://127.0.0.1:8080/img/book1.791f92d3.png"
+    },
+    "img/book2.13c69505.png": {
+      "name": "img/book2.13c69505.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/book2.13c69505.png",
+      "publicPath": "http://127.0.0.1:8080/img/book2.13c69505.png"
+    },
+    "img/bookmark1.2b880a6a.png": {
+      "name": "img/bookmark1.2b880a6a.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/bookmark1.2b880a6a.png",
+      "publicPath": "http://127.0.0.1:8080/img/bookmark1.2b880a6a.png"
+    },
+    "img/follower1.006cfcad.png": {
+      "name": "img/follower1.006cfcad.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/follower1.006cfcad.png",
+      "publicPath": "http://127.0.0.1:8080/img/follower1.006cfcad.png"
+    },
+    "img/follower2.f32551ac.png": {
+      "name": "img/follower2.f32551ac.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/follower2.f32551ac.png",
+      "publicPath": "http://127.0.0.1:8080/img/follower2.f32551ac.png"
+    },
+    "img/footprint1.3dd1e00c.png": {
+      "name": "img/footprint1.3dd1e00c.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/footprint1.3dd1e00c.png",
+      "publicPath": "http://127.0.0.1:8080/img/footprint1.3dd1e00c.png"
+    },
+    "img/footprint2.7b135753.png": {
+      "name": "img/footprint2.7b135753.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/footprint2.7b135753.png",
+      "publicPath": "http://127.0.0.1:8080/img/footprint2.7b135753.png"
+    },
+    "img/home1.95f7c1e6.png": {
+      "name": "img/home1.95f7c1e6.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/home1.95f7c1e6.png",
+      "publicPath": "http://127.0.0.1:8080/img/home1.95f7c1e6.png"
+    },
+    "img/home2.e26c5c05.png": {
+      "name": "img/home2.e26c5c05.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/home2.e26c5c05.png",
+      "publicPath": "http://127.0.0.1:8080/img/home2.e26c5c05.png"
+    },
+    "img/logo1.a6319e0d.png": {
+      "name": "img/logo1.a6319e0d.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/logo1.a6319e0d.png",
+      "publicPath": "http://127.0.0.1:8080/img/logo1.a6319e0d.png"
+    },
+    "img/munhak1.b4965756.png": {
+      "name": "img/munhak1.b4965756.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/munhak1.b4965756.png",
+      "publicPath": "http://127.0.0.1:8080/img/munhak1.b4965756.png"
+    },
+    "img/rain1.2f027682.png": {
+      "name": "img/rain1.2f027682.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/rain1.2f027682.png",
+      "publicPath": "http://127.0.0.1:8080/img/rain1.2f027682.png"
+    },
+    "img/rain2.5001a2ee.png": {
+      "name": "img/rain2.5001a2ee.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/rain2.5001a2ee.png",
+      "publicPath": "http://127.0.0.1:8080/img/rain2.5001a2ee.png"
+    },
+    "img/write1.08285c94.png": {
+      "name": "img/write1.08285c94.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/write1.08285c94.png",
+      "publicPath": "http://127.0.0.1:8080/img/write1.08285c94.png"
+    },
+    "img/write2.4636d41f.png": {
+      "name": "img/write2.4636d41f.png",
+      "path": "/workspace/Soul/back/django-vue/dist/img/write2.4636d41f.png",
+      "publicPath": "http://127.0.0.1:8080/img/write2.4636d41f.png"
+    },
+    "js/0.js": {
+      "name": "js/0.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/0.js",
+      "publicPath": "http://127.0.0.1:8080/js/0.js"
+    },
+    "js/1.js": {
+      "name": "js/1.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/1.js",
+      "publicPath": "http://127.0.0.1:8080/js/1.js"
+    },
+    "js/2.js": {
+      "name": "js/2.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/2.js",
+      "publicPath": "http://127.0.0.1:8080/js/2.js"
+    },
+    "js/3.js": {
+      "name": "js/3.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/3.js",
+      "publicPath": "http://127.0.0.1:8080/js/3.js"
+    },
+    "js/4.js": {
+      "name": "js/4.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/4.js",
+      "publicPath": "http://127.0.0.1:8080/js/4.js"
+    },
+    "js/5.js": {
+      "name": "js/5.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/5.js",
+      "publicPath": "http://127.0.0.1:8080/js/5.js"
+    },
+    "js/6.js": {
+      "name": "js/6.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/6.js",
+      "publicPath": "http://127.0.0.1:8080/js/6.js"
+    },
+    "js/7.js": {
+      "name": "js/7.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/7.js",
+      "publicPath": "http://127.0.0.1:8080/js/7.js"
+    },
+    "js/8.js": {
+      "name": "js/8.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/8.js",
+      "publicPath": "http://127.0.0.1:8080/js/8.js"
+    },
+    "js/9.js": {
+      "name": "js/9.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/9.js",
+      "publicPath": "http://127.0.0.1:8080/js/9.js"
+    },
+    "js/index.js": {
+      "name": "js/index.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/index.js",
+      "publicPath": "http://127.0.0.1:8080/js/index.js"
+    },
+    "js/main.js": {
+      "name": "js/main.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/main.js",
+      "publicPath": "http://127.0.0.1:8080/js/main.js"
+    },
+    "js/mypage.js": {
+      "name": "js/mypage.js",
+      "path": "/workspace/Soul/back/django-vue/dist/js/mypage.js",
+      "publicPath": "http://127.0.0.1:8080/js/mypage.js"
+    },
+    "index.html": {
+      "name": "index.html",
+      "path": "/workspace/Soul/back/django-vue/dist/index.html",
+      "publicPath": "http://127.0.0.1:8080/index.html"
+    },
+    "static/favicon.ico": {
+      "name": "static/favicon.ico",
+      "path": "/workspace/Soul/back/django-vue/dist/static/favicon.ico",
+      "publicPath": "http://127.0.0.1:8080/static/favicon.ico"
+    }
+  },
+  "chunks": {
+    "index": [
+      "js/index.js"
+    ]
+  },
+  "publicPath": "http://127.0.0.1:8080/"
+}

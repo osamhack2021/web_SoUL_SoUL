@@ -24,7 +24,7 @@ export default {
 	.spinner-border {
 		position: absolute;
 		top: 35%;
-		left: 49%;
+		left: 48.5%;
 		color: #C4C4C4;
 	}
 /* .lds-facebook {

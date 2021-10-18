@@ -1,5 +1,5 @@
 from rest_framework import serializers # serializer import
-from .models import Category, Question, MunhakType, Post, Like, Bookmark # 선언한 모델 import
+from .models import Category, Question, Post, Like, Bookmark # 선언한 모델 import
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,15 +11,10 @@ class QuestionSerializer(serializers.ModelSerializer):
         model = Question
         fields = ('id', 'name', 'content', 'slug')
         
-class MunhakTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MunhakType
-        fields = ('id', 'name', 'slug')
-        
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('id', 'author', 'title', 'intro', 'content', 'category', 'question', 'munhak_type', 'is_no_public', 'created_at', 'updated_at', 'like_user_set', 'bookmark_user_set')
+        fields = ('id', 'author', 'title', 'intro', 'content', 'category', 'question',  'is_no_public', 'created_at', 'updated_at', 'like_user_set', 'bookmark_user_set')
         
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:

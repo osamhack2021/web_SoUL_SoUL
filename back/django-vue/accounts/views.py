@@ -8,6 +8,7 @@ import json
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from rest_framework import viewsets # vieset import
 from .serializers import ProfileSerializer, FollowSerializer # 생성한 serializer import
@@ -52,11 +53,30 @@ def signup(request):
         
         return render(request, 'post/post_list_ajax.html', {
             'posts': posts,
-            # 'comment_form': comment_form,
         })  
     return render(request, 'accounts/signup.html', {
         'form': form,
     })
+
+    
+
+@login_required
+def update_profile(request):
+    args = {}
+
+    if request.method == 'POST':
+        form = UpdateProfile(request.POST, instance=request.user)
+        form.actual_user = request.user
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('수정 완료'))
+    else:
+        form = UpdateProfile()
+
+    args['form'] = form
+    return render(request, 'accounts/update_profile.html', args)
+
 
 def login_check(request):
     if request.method == "POST":
@@ -99,6 +119,10 @@ def follow(request):
         'status': status,
     }
     return HttpResponse(json.dumps(context), content_type="application/json")
+
+
+
+    
     
             
 

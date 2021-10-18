@@ -7,7 +7,6 @@ app_name = 'post'
 router = routers.DefaultRouter()  # DefaultRouter 설정
 router.register('category', views.CategoryViewSet)  # ViewSet과 함께 user라는 router 등록
 router.register('question', views.QuestionViewSet)
-router.register('munhak_type', views.MunhakTypeViewSet)
 router.register('post', views.PostViewSet)
 router.register('like', views.LikeViewSet)
 router.register('bookmark', views.BookmarkViewSet)
@@ -16,7 +15,7 @@ urlpatterns = [
     
     path('', include(router.urls)),
     
-    path('list/', views.PostList.as_view()),
+    path('list/', views.PostList.as_view(), name='post_list'),
     path('footprint_list/', views.FootprintList.as_view()),
     path('<int:pk>/', views.PostDetail.as_view()),
     
@@ -50,8 +49,5 @@ urlpatterns = [
     # path('<username>/list/footprint', my_footprint_list, name='my_footprint_list'),
     # path('<username>/list/book', my_book_list, name='my_book_list'),
     # path('<username>/list/munhak', my_munhak_list, name='my_munhak_list'),
-    
-    
-    
   
 ]

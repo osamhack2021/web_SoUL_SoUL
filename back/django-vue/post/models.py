@@ -31,16 +31,6 @@ class Question(models.Model):
         return f'/post/question/{self.slug}/'
     
     
-class MunhakType(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-    slug = models.SlugField(max_length=100, unique=True, allow_unicode=True)
-    
-    def __str__(self):
-        return self.name
-    
-    def get_absolute_url(self):
-        return f'/post/munhak_type/{self.slug}/'
-    
 
 
 class Post(models.Model):
@@ -55,13 +45,9 @@ class Post(models.Model):
                                  null=True,
                                  blank=True,
                                  on_delete=models.PROTECT)
-    munhak_type = models.ForeignKey(MunhakType,
-                                 null=True,
-                                 blank=True,
-                                 on_delete=models.PROTECT)
     is_no_public = models.BooleanField(default=False, verbose_name = '비공개')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
     like_user_set = models.ManyToManyField(settings.AUTH_USER_MODEL,
                                            blank=True,
                                            related_name='like_user_set',

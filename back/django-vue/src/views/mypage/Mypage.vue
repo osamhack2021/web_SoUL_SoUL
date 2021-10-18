@@ -15,7 +15,7 @@
 				<router-link class="fontCenter" to="/mypage/book" @click="changeBtn(3)"><span :class="{ gray: btn == 3}" class="button-default button-content">독후감</span></router-link>
 				<router-link class="fontCenter" to="/mypage/munhak" @click="changeBtn(4)"><span :class="{ gray: btn == 4}" class="button-default button-content">문학</span></router-link>
 			</div>
-			<section id="content-header"></section>
+			<!-- <section id="content-header"></section> -->
 			<section><!-- 안에 컨텐츠별 글 상자 나오게 구성-->
 					<router-view></router-view>
 			</section>
@@ -94,14 +94,12 @@
 		display: flex;
 		justify-content: space-between;
 	}
-	#mycontents #content-header {
+	/* #mycontents #content-header {
 		position: relative;
 		width: 42.5rem;
-		height: 2.5rem;
+		height: .5rem;
 		margin: 0.5rem 0;
-		
-		border: 1px solid;
-	}
+	} */
 	.button-default {
 		position: relative;
 		box-sizing: border-box;

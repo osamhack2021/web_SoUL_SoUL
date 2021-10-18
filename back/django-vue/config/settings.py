@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     
-    'webpack_loader',
+    # 'webpack_loader',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -36,10 +36,10 @@ INSTALLED_APPS = [
     'markdownx',
     'crispy_forms',
     'rest_framework',
+    'corsheaders',
     
     'accounts',
     'post',
-    'api',
        
 ]
 
@@ -51,7 +51,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+)
 
 ROOT_URLCONF = 'config.urls'
 
@@ -149,10 +156,10 @@ SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': DEBUG,
-        'BUNDLE_DIR_NAME': '/bundles/',  # must end with slash
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-    }
-}
+# WEBPACK_LOADER = {
+#     'DEFAULT': {
+#         'CACHE': DEBUG,
+#         'BUNDLE_DIR_NAME': '/bundles/',  # must end with slash
+#         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+#     }
+# }

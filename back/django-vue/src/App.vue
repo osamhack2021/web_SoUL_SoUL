@@ -24,6 +24,9 @@
 	html {
 		font-size: 16px;
 	}
+	div {
+		max-width: 1903px;
+	}
 	.maincontent {
 		min-height: 700px;
 	}

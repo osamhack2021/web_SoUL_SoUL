@@ -1,6 +1,6 @@
 <template>
 	<div id="footer">
-		<p class="developer-intro">소개 | 블로그 | 도움말 | 개인정보처리방침 | 개발자소개</p>
+		<p class="developer-intro"><a href="#">소개</a> | <a href="#">블로그</a> | <a href="#">도움말</a> | <a href="#">개인정보처리방침</a> | <a href="#">개발자소개</a></p>
 		<div id="copyright-box">
 			<div class="tmp"><span>아이콘 저작권</span><span><button @click="isShowCopyright = !isShowCopyright" class="dropdown-toggle"></button></span></div>
 			<ul v-if="isShowCopyright">
@@ -19,7 +19,7 @@
 	export default {
 		data() {
 			return {
-				isShowCopyright: "false"
+				isShowCopyright: false
 			};
 		},
 	}
@@ -33,8 +33,15 @@
 		width: 100%;
 		margin-top: 150px;
 	}
+	#footer button {
+		outline: none;
+	}
 	#footer .developer-intro {
 		margin: 0 auto;
+		color: gray;
+	}
+	#footer .developer-intro a, a:visited {
+		text-decoration: none;
 		color: gray;
 	}
 	#footer #copyright-box{
