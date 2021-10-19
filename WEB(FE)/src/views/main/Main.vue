@@ -20,10 +20,10 @@
 			return {
 				selected : [],
 				imgsrc : [
-				[require("../../assets/rain1.png"), require("../../assets/rain2.png")],
-					[require("../../assets/footprint1.png"), require("../../assets/footprint2.png")],
-						[require("../../assets/book1.png"), require("../../assets/book2.png")],
-						[require("../../assets/munhak1.png"), require("../../assets/munhak2.png")]
+				[require("@/assets/rain1.png"), require("@/assets/rain2.png")],
+					[require("@/assets/footprint1.png"), require("@/assets/footprint2.png")],
+						[require("@/assets/book1.png"), require("@/assets/book2.png")],
+						[require("@/assets/munhak1.png"), require("@/assets/munhak2.png")]
 				]
 			};
 		},

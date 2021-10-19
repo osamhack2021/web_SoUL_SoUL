@@ -2,14 +2,14 @@
 <div>
 	<header id="header">
 		<section class="inner">
-			<button @click="toHome" id="logo"><img src="../assets/logo2.png" alt=""></button>
+			<button @click="toHome" id="logo"><img src="@/assets/logo2.png" alt=""></button>
 			<div id="right-icon">
-				<router-link to="/sonagi"><img @click="selected = [1, 0, 0, 0]" :src="imgsrc[0][selected[0]]" alt="home" class="iconsize iconbox"></router-link>
-				<router-link to="/blank"><img @click="selected = [0, 1, 0, 0]" :src="imgsrc[1][selected[1]]" alt="follower" class="iconsize iconbox"></router-link>
-				<router-link to="/blank"><img @click="selected = [0, 0, 1, 0]" :src="imgsrc[2][selected[2]]" alt="bookmark" class="iconsize iconbox"></router-link>
-				<router-link to="/mypage/sonagi" id="profileIcon" class="iconbox"><span @click="selected = [0, 0, 0, 0]">{{ userinitial }}</span></router-link>
+				<router-link to="/sonagi"><img @click="selectIcon(0)" :src="imgsrc[0][icon[0]]" alt="home" class="iconsize iconbox"></router-link>
+				<router-link to="/blank"><img @click="selectIcon(1)" :src="imgsrc[1][icon[1]]" alt="follower" class="iconsize iconbox"></router-link>
+				<router-link to="/blank"><img @click="selectIcon(2)" :src="imgsrc[2][icon[2]]" alt="bookmark" class="iconsize iconbox"></router-link>
+				<router-link to="/mypage/sonagi" id="profileIcon" class="iconbox"><span @click="icon = [0, 0, 0, 0]">{{ userinitial }}</span></router-link>
 				<div class="dropdown">
-					<button @click="selected = [0, 0, 0, 0]" class="btn" type="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false"></button>
+					<button @click="selectIcon(3)" class="btn" type="button" id="writecontent" data-bs-toggle="dropdown" aria-expanded="false"></button>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="writecontent">
 						<router-link class="dropdown-item" to="/writesonagi">소나기</router-link>
 						<router-link class="dropdown-item" to="/writeques">발자국</router-link>
@@ -32,13 +32,14 @@
 		data() {
 			return {
 				userinitial: '',
-				selected : [1, 0, 0, 0],
+				// selected : [1, 0, 0, 0],
+				icon: [1, 0, 0, 0],
 				isshow: true,
 				imgsrc : [
-					[require("../assets/home1.png"), require("../assets/home2.png")],
-						[require("../assets/follower1.png"), require("../assets/follower2.png")],
-							[require("../assets/bookmark1.png"), require("../assets/bookmark2.png")],
-							[require("../assets/write1.png"), require("../assets/write2.png")]
+					[require("@/assets/home1.png"), require("@/assets/home2.png")],
+						[require("@/assets/follower1.png"), require("@/assets/follower2.png")],
+							[require("@/assets/bookmark1.png"), require("@/assets/bookmark2.png")],
+							// [require("@/assets/write1.png"), require("@/assets/write2.png")]
 				]
 			};
 		},
@@ -51,6 +52,13 @@
 			getInitial() {
 				this.userinitial = this.$store.getters.getInitial;
 			},
+			selectIcon(i) {
+				for(let x=0; x < 3; x++) {
+					this.icon[x] = 0;
+				}
+				this.icon[i] = 1;
+				console.log(i);
+			}
 		}, 
 		created() {
 			this.getInitial();
