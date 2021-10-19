@@ -39,6 +39,8 @@ class LikeViewSet(viewsets.ModelViewSet):
 class BookmarkViewSet(viewsets.ModelViewSet):
     queryset = Bookmark.objects.all()
     serializer_class = BookmarkSerializer
+    
+
 
 class PostList(ListView):
     model = Post

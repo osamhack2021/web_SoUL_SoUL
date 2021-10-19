@@ -15,7 +15,7 @@ urlpatterns = [
     
     path('', include(router.urls)),
     
-    path('list/', views.PostList.as_view(), name='post_list'),
+    path('list/', views.PostList.as_view()),
     path('footprint_list/', views.FootprintList.as_view()),
     path('<int:pk>/', views.PostDetail.as_view()),
     

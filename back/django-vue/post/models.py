@@ -74,11 +74,29 @@ class Post(models.Model):
     def get_absolute_url(self):
         return f'/post/{self.pk}/'
     
+    def get_title(self):
+        return self.title
+    
+    def get_intro(self):
+        return self.intro
+    
+    def get_content(self):
+        return self.content
+    
+    def get_category(self):
+        return self.category
+    
+    def get_created_time(self):
+        return self.created_at
+    
     def get_question(self):
         return self.question.content
     
     def get_public_option(self):
         return self.is_no_public.default
+    
+    def get_is_no_public(self):
+        return self.is_no_public
 
     def get_avatar_url(self):
         if self.author.socialaccount_set.exists():
