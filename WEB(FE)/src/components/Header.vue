@@ -53,11 +53,12 @@
 				this.userinitial = this.$store.getters.getInitial;
 			},
 			selectIcon(i) {
+				console.log('함수실행');
 				for(let x=0; x < 3; x++) {
 					this.icon[x] = 0;
 				}
 				this.icon[i] = 1;
-				console.log(i);
+				console.log(this.icon);
 			}
 		}, 
 		created() {

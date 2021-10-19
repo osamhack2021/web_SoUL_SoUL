@@ -1,33 +1,53 @@
 <template>
 	<div id="mainouter">
-		<button @click="openpost()" :key="i" v-for="(content, i) in contentList">
+		<button @click="openpost()" :key="i" v-for="(post, i) in post_list">
 			<section id="content-box">
-				<div id="in-header"><span class="title">{{ content.bookTitle }}</span><span class="username">{{ content.bookAuthor }}</span></div>
-				<p>{{ content.introText }}</p>
-				<div class="date-box">{{ content.contentDate }}</div>
+				<div id="in-header"><span class="title">{{ post.bookTitle }}</span><span class="username">{{ post.bookAuthor }}</span></div>
+				<p>{{ post.introText }}</p>
+				<div class="date-box">{{ post.contentDate }}</div>
 			</section>
 		</button>
 	</div>
 </template>
 
 <script>
+	import axios from "axios"
+	let url = "http://soul-bojmb.run.goorm.io/post/post/";    // Django DRF 서버 주소
 	
 	export default {
 		data() {
 			return {
-				contentList: [
-					{bookTitle: "노인과 바다", bookAuthor: "허밍웨이", introText: "설레는 그들을 충분히 것은 희망의 보라. 부패를 얼마나 천자만홍이 대중을 그들은 이것이야말로 뛰노는 그리하였는가? 갑 할지니, 밝은 이상의 시들어 칼이다. 고행을 되려니와, 것은 가치를 부패를 방황하였으며, 되는 그리하였는가? ",
-					contentDate: "2021.10.05"},
-					{bookTitle: "노인과 바다", bookAuthor: "허밍웨이", introText: "설레는 그들을 충분히 것은 희망의 보라. 부패를 얼마나 천자만홍이 대중을 그들은 이것이야말로 뛰노는 그리하였는가? 갑 할지니, 밝은 이상의 시들어 칼이다. 고행을 되려니와, 것은 가치를 부패를 방황하였으며, 되는 그리하였는가? ",
-					contentDate: "2021.10.05"},
-					{bookTitle: "노인과 바다", bookAuthor: "허밍웨이", introText: "설레는 그들을 충분히 것은 희망의 보라. 부패를 얼마나 천자만홍이 대중을 그들은 이것이야말로 뛰노는 그리하였는가? 갑 할지니, 밝은 이상의 시들어 칼이다. 고행을 되려니와, 것은 가치를 부패를 방황하였으며, 되는 그리하였는가? ",
-					contentDate: "2021.10.05"},
-				]};
+				post_list: []
+			};
 		}, 
 		methods: {
 			openpost() {
 				this.$router.push('postbook');
-			}
+			},
+			modifyList() {
+				let tmp = this.post_list;
+				this.post_list = [];
+                
+				for(let i=0; i<tmp.length; i++){
+					if(tmp[i].category == 3){
+						this.post_list.push(tmp[i]);
+					}
+				}
+				console.log(this.post_list);
+			},
+		},
+		mounted() {
+				axios({
+				moethod: "GET",
+				url: url
+			})
+				.then(response => {
+				this.post_list = response.data;
+				this.modifyList();
+			})
+				.catch(response => {
+				console.log("Failed", response);
+			});
 		}
 	}
 </script>

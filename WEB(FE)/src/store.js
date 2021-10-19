@@ -20,7 +20,8 @@ export default createStore({
 					"4. 군생활 중 가장 외로웠던 순간은?",
 					"5. 군생활 중 가장 위기였던 순간은?",
 			],
-			Question: ''
+			Question: '',
+			Content: {},
 		}
 	},
 	getters: {

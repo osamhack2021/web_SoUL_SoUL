@@ -1,30 +1,26 @@
 <template>
 	<div id="mainouter">
 		<h2 id="question-box">{{ Question }}</h2> <!-- Question.vue에서 받은 num에 따라 question이 달라짐. 또한 밑에 content-box에 띄워야할 컨텐츠로 num따라 다르게 DB에서 가져옴 -->
-		<button @click="openpost()" :key="i" v-for="(content, i) in contentList">
+		<button @click="openpost()" :key="i" v-for="(post, i) in post_list">
 			<section id="content-box">
-				<div class="nickname">{{ content.Nickname }}</div>
-				<p class="maintext-box">{{ content.mainText }}</p>
-				<div class="date-box">{{ content.contentDate }}</div>
+				<div class="nickname">{{ post.Nickname }}</div>
+				<p class="maintext-box">{{ post.mainText }}</p>
+				<div class="date-box">{{ post.contentDate }}</div>
 			</section>
 		</button>
 	</div>
 </template>
 
 <script>
+	import axios from "axios"
+	let url = "http://soul-bojmb.run.goorm.io/post/post/";    // Django DRF 서버 주소
 	
 	export default {
 		data() {
 			return {
 				Question: "",
-				contentList: [
-					{Nickname: "김동규", mainText: "이 청춘 굳세게 시들어 피에 하였으며, 뜨거운지라, 철환하였는가? 얼마나 이는 원질이 있는 곳이 피는 생의 힘차게 이것이다. 위하여, 무엇을 쓸쓸한 피에 이상의 방황하여도, 만천하의 이상의 있다.", 
-					contentDate: "2021.10.05"},
-					{Question: "", Nickname: "김동규", mainText: "이 청춘 굳세게 시들어 피에 하였으며, 뜨거운지라, 철환하였는가? 얼마나 이는 원질이 있는 곳이 피는 생의 힘차게 이것이다. 위하여, 무엇을 쓸쓸한 피에 이상의 방황하여도, 만천하의 이상의 있다.", 
-					contentDate: "2021.10.05"},
-					{Question: "", Nickname: "김동규", mainText: "이 청춘 굳세게 시들어 피에 하였으며, 뜨거운지라, 철환하였는가? 얼마나 이는 원질이 있는 곳이 피는 생의 힘차게 이것이다. 위하여, 무엇을 쓸쓸한 피에 이상의 방황하여도, 만천하의 이상의 있다.", 
-					contentDate: "2021.10.05"}
-				]};
+				post_list: []
+			};
 		}, 
 		methods: {
 			openpost() {
@@ -32,9 +28,31 @@
 			},
 			getQuestion(){
 				this.Question = this.$store.getters.getQuestion;
-			}
+			},
+			modifyList() {
+				let tmp = this.post_list;
+				this.post_list = [];
+                
+				for(let i=0; i<tmp.length; i++){
+					if(tmp[i].category == 2){
+						this.post_list.push(tmp[i]);
+					}
+				}
+				console.log(this.post_list);
+			},
 		},
 		mounted() {
+			axios({
+				moethod: "GET",
+				url: url
+			})
+				.then(response => {
+				this.post_list = response.data;
+				this.modifyList();
+			})
+				.catch(response => {
+				console.log("Failed", response);
+			});
 			this.getQuestion();
 		}
 	}

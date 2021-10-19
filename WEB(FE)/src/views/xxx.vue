@@ -1,170 +1,95 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from "../views/Home.vue"
-import Login from "../views/Login.vue"
-import Footer from "../components/Footer.vue"
-import Header from "../components/Header.vue"
-import Main from "../views/main/Main.vue"
-import Mainsonagi from "../views/main/Mainsonagi"
-import Questions from "../views/main/Questions"
-import Mainfootprint from "../views/main/Mainfootprint"
-import Mainbook from "../views/main/Mainbook"
-import Mainmunhak from "../views/main/Mainmunhak"
-import Mypage from "../views/mypage/Mypage.vue"
-import Mysonagi from "../views/mypage/Mysonagi.vue"
-import Myfootprint from "../views/mypage/Myfootprint.vue"
-import Mybook from "../views/mypage/Mybook.vue"
-import Mymunhak from "../views/mypage/Mymunhak.vue"
-import EditProfile from '../views/mypage/EditProfile.vue'
-import WriteSonagi from "../views/write/WriteSonagi.vue"
-import WriteQues from "../views/write/WriteQues.vue"
-import WriteFootprint from "../views/write/WriteFootprint.vue"
-import WriteBook from "../views/write/WriteBook.vue"
-import WriteMunhak from "../views/write/WriteMunhak.vue"
-import PostSonagi from "../views/post/PostSonagi.vue"
-import PostFootprint from "../views/post/PostFootprint.vue"
-import PostBook from "../views/post/PostBook.vue"
-import PostMunhak from "../views/post/PostMunhak.vue"
+<template>
+	<div id="mainouter">
+		<button @click="openpost()" :key="i" v-for="(content, i) in contentList">
+			<section id="content-box">
+				<div id="in-header"><span class="date">{{ content.contentDate }}</span><span class="nickname">{{ content.Nickname }}</span></div>
+				<p class="maintext-box">{{ content.mainText }}</p>
+			</section>
+		</button>
+	</div>
+</template>
 
-const routes = [
-	{
-		path: '/home', 
-		name: 'Home', 
-		components: {
-			default: Home,
-			footer: Footer
-		}
-	},
-	{
-		path: '/login', 
-		name: 'login', 
-		component: Login
-	},
-	{
-		path: '/',
-		components: {
-			default: Main, 
-			header: Header,
-			footer: Footer
+<script>
+	import axios from "axios";
+	
+	let url = "";
+	
+	export default {
+		data() {
+			return {
+				contentList: []
+			};
 		},
-		children: [
-			{ path: 'sonagi', name: 'Mysonagi', component: Mainsonagi},
-			{ path: 'questions', name: 'Questions', component: Questions},
-			{ path: 'footprint', name: 'Myfootprint', component: Mainfootprint},
-			{ path: 'book', name: 'Mybook', component: Mainbook},
-			{ path: 'munhak', name: 'Mymunhak', component: Mainmunhak}
-		],
-	},
-	{	
-		path: '/mypage', //mypage 붙여주기
-		name: 'Mypage', 
-		components: {
-			default: Mypage,
-			header: Header,
-			footer: Footer
+		methods: {
+			openpost() {
+				this.$router.push('postsonagi');
+			},
+			modifyList() {
+				let tmp = this.contentList;
+				this.contentList = [];
+				
+				for(let content in tmp){
+					if(content.category == 1){
+						this.contentList.push(content);
+					}
+				}
+			}
 		},
-		children: [
-			{ path: 'sonagi', component: Mysonagi },
-			{ path: 'footprint', component: Myfootprint },
-			{ path: 'book', component: Mybook },
-			{ path: 'munhak', component: Mymunhak }
-		],
-	},
-	{
-		path: '/editprofile',
-		name: 'EditProfile',
-		components: {
-			default: EditProfile,
-			header: Header,
-			footer: Footer
-		}
-	},
-	{
-		path: '/writesonagi',
-		name: 'WriteSonagi',
-		components: {
-			default: WriteSonagi, 
-			header: Header,
-		}
-	},
-	{
-		path: '/writeques',
-		components: {
-			default: WriteQues,
-			header: Header
-		}
-	},
-	{
-		path: '/writeques', 
-		components: {
-			default: WriteQues,
-			header: Header
-		}
-	},
-	{
-		path: '/writefootprint',
-		name: 'WriteFootprint',
-		components: {
-			default: WriteFootprint,
-			header: Header
-		}
-	},
-	{
-		path: '/writebook',
-		name: 'WriteBook',
-		components: {
-			default: WriteBook,
-			header: Header,
-		}
-	},
-	{
-		path: '/writemunhak',
-		name: 'WriteMunhak',
-		components: {
-			default: WriteMunhak,
-			header: Header,
-		}
-	},
-	{
-		path: '/postsonagi',
-		name: 'PostSonagi',
-		components: {
-			default: PostSonagi,
-			header: Header,
-			footer: Footer
-		}
-	},
-	{
-		path: '/postfootprint',
-		name: 'PostFootprint',
-		components: {
-			default: PostFootprint,
-			header: Header,
-			footer: Footer
-		}
-	},
-	{
-		path: '/postbook',
-		name: 'PostBook',
-		components: {
-			default: PostBook,
-			header: Header,
-			footer: Footer
-		}
-	},
-	{
-		path: '/postmunhak',
-		name: 'PostMunhak',
-		components: {
-			default: PostMunhak,
-			header: Header,
-			footer: Footer
-		}
-	},
-]
+		mounted() { // DOM 객체가 생성된 후 DRF server 에서 데이터를(userList) 가져와 저장
+			axios({
+				method: "GET",
+				url: url 
+			})
+				.then(response => {
+				this.contentList = response.data;
+			})
+				.catch(response => {
+				console.log("Failed", response);
+		});
+  },
+	}
+</script>
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+<style>
+	#mainouter button {
+		margin: 0 auto 16px;
+		border: none;
+		background: none;
+		text-align: initial;
+	}
+	#mainouter button:active {
+		opacity: 0.8;
+		/* border: 1px solid rgba(196,196,196,0.4); */
+		outline: none;
+	}
+	#mainouter button:focus {
+		outline: none;
+	}
+</style>
 
-export default router
+<style scoped>
+	#content-box {
+		/* margin: 0 auto 26px; */
+		padding: 0 1rem;
+		width: 42.5rem;
+		border: 1px solid rgba(196,196,196,0.2);
+		border-radius: 4px; 
+		/* box-shadow: 1px 1px 1px 1px 0.8px; */
+    background: rgba(196,196,196,0.2);
+	}
+	#content-box p { margin-bottom: 0.7rem; }
+	#content-box #in-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0.5rem 0;
+	}
+	#content-box #in-header .date { font-size: 1.25rem; }
+	#content-box #in-header .nickname { font-size: 1rem; }
+	#content-box .maintext-box {
+		display: -webkit-box;
+		-webkit-line-clamp: 7; /*줄 넘어가면 잘라주는 웹킷*/
+		-webkit-box-orient: vertical; /*줄 넘어가면 잘라주는 웹킷*/
+		overflow: hidden;
+	}
+</style>

@@ -1,53 +1,57 @@
 <template>
 	<div id="mainouter">
-		<button @click="openpost()" :key="i" v-for="(content, i) in contentList">
+		<button @click="openpost(i)" :key="i" v-for="(post, i) in post_list" >
 			<section id="content-box">
-				<div id="in-header"><span class="date">{{ content.contentDate }}</span><span class="nickname">{{ content.Nickname }}</span></div>
-				<p class="maintext-box">{{ content.mainText }}</p>
+				<div id="in-header"><span class="date">{{ post.created_at }}</span><span class="nickname">{{ post.nickname }}</span></div>
+				<p class="maintext-box">{{ post.content }}</p>
 			</section>
 		</button>
 	</div>
 </template>
 
 <script>
-	import axios from "axios";
-	
-	let url = "";
+	import axios from "axios"
+	let url = "http://soul-bojmb.run.goorm.io/post/post/";    // Django DRF 서버 주소
 	
 	export default {
 		data() {
 			return {
-				contentList: []
+				post_list: []
 			};
 		},
 		methods: {
-			openpost() {
+			openpost(i) {
+				this.$store.state.Content = this.post_list[i];
 				this.$router.push('postsonagi');
 			},
 			modifyList() {
-				let tmp = this.contentList;
-				this.contentList = [];
-				
-				for(let content in tmp){
-					if(content.category == 1){
-						this.contentList.push(content);
+				let tmp = this.post_list;
+				this.post_list = [];
+                
+				for(let i=0; i<tmp.length; i++){
+					if(tmp[i].category == 1){
+						this.post_list.push(tmp[i]);
 					}
 				}
-			}
+				console.log(this.post_list);
+			},
 		},
-		mounted() { // DOM 객체가 생성된 후 DRF server 에서 데이터를(userList) 가져와 저장
+		mounted() {    //DOM 객체가 생성된 후 DRF 서버에서 데이터를 (contentList) 가져와 저장
 			axios({
-				method: "GET",
-				url: url 
+				moethod: "GET",
+				url: url
 			})
 				.then(response => {
-				this.contentList = response.data;
+				this.post_list = response.data;
+				this.modifyList();
 			})
 				.catch(response => {
 				console.log("Failed", response);
-		});
-  },
+			});
+		}
 	}
+
+    
 </script>
 
 <style>
