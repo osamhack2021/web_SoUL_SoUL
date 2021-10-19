@@ -24,7 +24,13 @@
 		methods: {
 			back() {
 				this.$router.go(-1);
+			},
+			getPost() {
+				this.post = this.$store.getters.getPost;
 			}
+		},
+		mounted() {
+			this.getPost();
 		}
 		// computed: {
 		// 	user() {

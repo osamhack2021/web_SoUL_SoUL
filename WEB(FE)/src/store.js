@@ -20,7 +20,7 @@ export default createStore({
 					"4. 군생활 중 가장 외로웠던 순간은?",
 					"5. 군생활 중 가장 위기였던 순간은?",
 			],
-			Question: '',
+			Post: '',
 			Content: {},
 		}
 	},
@@ -42,6 +42,9 @@ export default createStore({
 		},
 		getQuestion(state) {
 			return state.Question.substring(3,);
+		},
+		getPost(state) {
+			return state.Content;
 		}
 	},
 	mutations: {
